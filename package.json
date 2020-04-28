@@ -1,0 +1,63 @@
+{
+  "name": "company-web",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon --exec ts-node --project tsconfig.server.json server/index.ts",
+    "build": "next build",
+    "start": "next start",
+    "start:prod": "export NODE_ENV=production && node server/index.ts",
+    "tslint": "tslint -p . -c tslint.json"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.12",
+    "@material-ui/icons": "^4.9.1",
+    "@types/next": "^8.0.6",
+    "@zeit/next-sass": "^1.0.1",
+    "autoprefixer": "^9.7.1",
+    "axios": "^0.19.2",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "i18next-icu": "^1.1.2",
+    "next": "^9.3.5",
+    "next-cookie": "^2.2.2",
+    "next-i18next": "^2.0.0",
+    "next-redux-wrapper": "^5.0.0",
+    "nextjs-fonts": "^0.22.0",
+    "node-sass": "^4.14.0",
+    "nodemon": "^1.19.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "ts-node": "^8.9.1",
+    "tslint-react": "^4.2.0",
+    "tslint-react-hooks": "^2.2.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.150",
+    "@types/node": "^13.13.4",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "tslint": "^6.1.2",
+    "tslint-config-airbnb": "^5.11.2",
+    "typescript": "^3.8.3"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run tslint"
+    }
+  }
+}

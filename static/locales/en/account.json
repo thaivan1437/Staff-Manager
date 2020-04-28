@@ -1,0 +1,11 @@
+{
+  "yourEmail": "Your email",
+  "yourPassword": "Your password",
+  "enterEmail": "Please enter your email address",
+  "enterPassword": "Please enter your password",
+  "login": "Login",
+  "signin": "Sign in",
+  "signup": "Sign up",
+  "forgotPassword": "Forgot Password?",
+  "noAccount": "Do not have an account?"
+}
