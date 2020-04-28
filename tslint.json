@@ -60,7 +60,8 @@
     "prefer-object-spread": true,
     "prefer-template": true,
     "object-literal-shorthand": true,
-    "no-default-export": true
+    "no-default-export": true,
+    "file-name-casing": [true, "snake-case"]
     
   }
 }
