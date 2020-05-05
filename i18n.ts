@@ -2,10 +2,8 @@ import ICU from 'i18next-icu';
 import en from 'i18next-icu/locale-data/en';
 import vi from 'i18next-icu/locale-data/vi';
 import NextI18next from 'next-i18next';
-// tslint:disable-next-line:no-implicit-dependencies
 import _ from 'lodash';
 import { NextComponentType, NextPageContext } from 'next';
-// tslint:disable-next-line:no-implicit-dependencies
 import { useTranslation as originalUseTranslation } from 'react-i18next';
 
 // tslint:disable-next-line:no-any
@@ -18,7 +16,6 @@ use.push(icu);
 
 let detectionOrder: string[] = [];
 
-// tslint:disable-next-line:no-var-requires
 const i18nextMiddleware = require('i18next-express-middleware');
 const languageDetector = new i18nextMiddleware.LanguageDetector(undefined, {
   order: ['enforcedLocale', 'languageByDomain'],

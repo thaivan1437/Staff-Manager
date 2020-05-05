@@ -2,19 +2,27 @@
   "name": "company-web",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon --exec ts-node --project tsconfig.server.json server/index.ts",
+    "local": "NODE_ENV=test PORT=3000 ts-node --project tsconfig.server.json server/index.ts",
     "build": "next build",
-    "start": "next start",
-    "start:prod": "export NODE_ENV=production && node server/index.ts",
+    "start:prod": "NODE_ENV=production PORT=3000 ts-node --project tsconfig.server.json server/index.ts",
+    "start:staging": "NODE_ENV=staging PORT=3000 ts-node --project tsconfig.server.json server/index.ts",
     "tslint": "tslint -p . -c tslint.json"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.12",
     "@material-ui/icons": "^4.9.1",
+    "@sentry/browser": "^5.15.5",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.6",
+    "@types/lodash": "^4.14.150",
     "@types/next": "^8.0.6",
+    "@types/node": "^13.13.4",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
     "@zeit/next-sass": "^1.0.1",
     "autoprefixer": "^9.7.1",
     "axios": "^0.19.2",
+    "babel-plugin-module-resolver": "^4.0.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "i18next-icu": "^1.1.2",
@@ -33,26 +41,20 @@
     "redux-thunk": "^2.3.0",
     "ts-node": "^8.9.1",
     "tslint-react": "^4.2.0",
-    "tslint-react-hooks": "^2.2.2"
+    "tslint-react-hooks": "^2.2.2",
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.150",
-    "@types/node": "^13.13.4",
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.6",
-    "babel-plugin-module-resolver": "^4.0.0",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
     "tslint": "^6.1.2",
-    "tslint-config-airbnb": "^5.11.2",
-    "typescript": "^3.8.3"
+    "tslint-config-airbnb": "^5.11.2"
   },
   "prettier": {
     "singleQuote": true,
     "trailingComma": "es5",
     "printWidth": 120,
     "semi": false,
-    "singleQuote": true,
     "arrowParens": "always"
   },
   "husky": {

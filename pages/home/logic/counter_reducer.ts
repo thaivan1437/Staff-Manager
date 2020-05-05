@@ -1,5 +1,5 @@
-import { Router } from '../../i18n';
-import { increment, resetCounter } from '../logic/counter_actions';
+import { Router } from '../../../i18n';
+import { increment, resetCounter } from './counter_actions';
 
 interface CounterValue {
   number: number;
@@ -31,11 +31,10 @@ export const counter = (state = initialState, action) => {
   }
 };
 
-// tslint:disable-next-line:no-shadowed-variable
-export const NextPage = (counter) => async (dispatch) => {
+export const NextPage = (counterState: { number: number }) => async (dispatch) => {
   try {
     await dispatch(increment());
-    if (counter.number === 5) {
+    if (counterState.number === 5) {
       dispatch(resetCounter());
       void Router.push('/account/UI/login');
     }

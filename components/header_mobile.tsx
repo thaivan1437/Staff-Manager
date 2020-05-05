@@ -7,6 +7,7 @@ const HeaderMobile: React.FunctionComponent = () => {
   async function onSwitchLanguage(event) {
     if (event.target.checked) {
       await i18n.changeLanguage('en');
+
       return;
     }
     await i18n.changeLanguage('vi');

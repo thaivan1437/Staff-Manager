@@ -6,6 +6,7 @@ const Header = () => {
   async function onSwitchLanguage(event) {
     if (event.target.checked) {
       await i18n.changeLanguage('en');
+
       return;
     }
     await i18n.changeLanguage('vi');
