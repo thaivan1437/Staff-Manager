@@ -1,4 +1,4 @@
-import { fetchData } from '../logic/todo_action';
+import { fetchData } from './todo_action';
 import axios from 'axios';
 
 interface TodoValue {

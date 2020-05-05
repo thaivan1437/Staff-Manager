@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { withTranslation, useTranslation } from '../i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import Header from '../components/header';
-import Body from './UI/body';
+import Body from './home/UI/body';
 import Footer from '../components/footer';
 import { TFunction } from 'next-i18next';
-import { getDataThunkAction } from './logic/todo_reducer';
+import { getDataThunkAction } from './home/logic/todo_reducer';
 
 interface DataType {
   t: TFunction;

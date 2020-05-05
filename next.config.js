@@ -1,10 +1,5 @@
 const withSass = require('@zeit/next-sass');
 const withFonts = require('nextjs-fonts');
-const {
-  PHASE_DEVELOPMENT_SERVER,
-  PHASE_PRODUCTION_BUILD,
-} = require('next/constants')
-
 
 function HACK_removeMinimizeOptionFromSassLoaders(config) {
   console.warn(
@@ -21,14 +16,10 @@ function HACK_removeMinimizeOptionFromSassLoaders(config) {
   });
 }
 
-module.exports = phase => {
-  const isDev = phase === PHASE_DEVELOPMENT_SERVER;
-  const isProd = phase === PHASE_PRODUCTION_BUILD && process.env.STAGING !== '1';
-  const isStaging = phase === PHASE_PRODUCTION_BUILD && process.env.STAGING === '1';
+module.exports = () => {
+  const isDev = process.env.NODE_ENV === 'test';
 
-  console.log(`isDev:${isDev}  isProd:${isProd}   isStaging:${isStaging}`);
-
-  const env = {
+  const config = {
     COMPANY_ENV: (() => {
       if (isDev) {
         return withSass(withFonts({
@@ -39,9 +30,13 @@ module.exports = phase => {
         }));
       }
       return 'COMPANY_ENV:not (isDev,isProd && !isStaging,isProd && isStaging)'
-    })()
+    })(),
+    publicRuntimeConfig:  { 
+      CLIENT_ENV: process.env.NODE_ENV,
+      DNS: 'https://5532e1ebb8be4e1cac7f5cded65a29ba@o374091.ingest.sentry.io/5222452'
+    },
+    pageExtensions: ["page.tsx"],
   }
-  return {
-    env,
-  }
+
+  return config
 }

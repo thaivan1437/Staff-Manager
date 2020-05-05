@@ -15,6 +15,7 @@
 - Định nghĩa tên các file json để translate và namespaces phải theo tên của page muốn dùng.
 - Cần định nghĩa interface (type) cho action/props/state redux, mục đích chính của dùng typescript là đảm bảo data type không bị nhầm lẫn so với dùng javascript.
 - Sử dụng react và redux hooks triệt để, không được dùng class tối đa.
+- tên một trang cần có đuôi page.tsx
 
 # Cách fix TSLint errors:
 - no-floating-promises:
