@@ -18,13 +18,13 @@ const Header = () => {
         <Grid container direction="row" alignItems="center">
           <Grid item md={3} justify="flex-start">
           <Link href="/about">
-            <Typography variant="h6" color="inherit">
+            <Typography className="AppBar-about" variant="h6" color="inherit">
               About
             </Typography>
           </Link>
           </Grid>
           <Grid container item sm={8} md={6} justify="center">
-            <Typography variant="h4" color="inherit">
+            <Typography className="AppBar-Tittle" variant="h4" color="inherit">
               COMPANY WEB
             </Typography>
           </Grid>
