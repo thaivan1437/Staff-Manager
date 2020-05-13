@@ -1,4 +1,4 @@
-const faker = require('faker')
+const faker = require('faker');
 
 export const person = {
   // tslint:disable-next-line:prefer-template
@@ -6,4 +6,4 @@ export const person = {
   email: faker.internet.email(),
   phone: faker.phone.phoneNumber(),
   message: faker.random.words(),
-}
+};

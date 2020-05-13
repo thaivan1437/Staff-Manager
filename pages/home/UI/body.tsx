@@ -19,7 +19,7 @@ const Body: React.FunctionComponent<BodyProps> = ({ t, title }) => {
   const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
 
-  function FormVehicle() {
+  const FormVehicle = () => {
     return (
       <React.Fragment>
         <Grid item xs={2}>
@@ -39,9 +39,9 @@ const Body: React.FunctionComponent<BodyProps> = ({ t, title }) => {
         </Grid>
       </React.Fragment>
     );
-  }
+  };
 
-  function FormCount() {
+  const FormCount = () => {
     return (
       <React.Fragment>
         <Grid item xs={2}>
@@ -59,11 +59,11 @@ const Body: React.FunctionComponent<BodyProps> = ({ t, title }) => {
         </Grid>
       </React.Fragment>
     );
-  }
+  };
 
   return (
     <main>
-      <div className="heroContent">
+      <div className="hero-content">
         <Container maxWidth="sm">
           <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
             {title}
@@ -72,7 +72,7 @@ const Body: React.FunctionComponent<BodyProps> = ({ t, title }) => {
             Something short and leading about the collection below—its contents, the creator, etc. Make it short and
             sweet, but not too short so folks don&apos;t simply skip over it entirely.
           </Typography>
-          <div className="heroButtons">
+          <div className="hero-buttons">
             <Grid container spacing={2} justify="center">
               <Grid item>
                 <Button variant="contained" color="primary">
@@ -88,12 +88,12 @@ const Body: React.FunctionComponent<BodyProps> = ({ t, title }) => {
           </div>
         </Container>
       </div>
-      <Container className="cardGrid" maxWidth="md">
+      <Container className="card-grid" maxWidth="md">
         <Grid container spacing={4}>
           {cards.map((card) => (
             <Grid item key={card} xs={12} sm={6} md={4}>
               <Card className="card">
-                <CardContent className="cardContent">
+                <CardContent className="card-content">
                   <Typography gutterBottom variant="h5" component="h2">
                     Heading
                   </Typography>

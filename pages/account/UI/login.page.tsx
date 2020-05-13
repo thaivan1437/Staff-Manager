@@ -13,7 +13,7 @@ const Login = () => {
   return (
     <React.Fragment>
       <Container component="main" maxWidth="xs">
-        <Typography className="Login-title" component="h1" variant="h4">
+        <Typography className="login-title" component="h1" variant="h4">
           {t('account:login')}
         </Typography>
         <form noValidate>
@@ -24,7 +24,7 @@ const Login = () => {
             required
             id="email"
             name="email"
-            className="Login-email"
+            className="login-email"
             fullWidth
             margin="normal"
             autoComplete="email"
@@ -38,7 +38,7 @@ const Login = () => {
             fullWidth
             id="password"
             name="password"
-            className="Login-password"
+            className="login-password"
             type="password"
             autoComplete="current-password"
             margin="normal"
@@ -48,7 +48,7 @@ const Login = () => {
               <a>{t('account:forgotPassword')}</a>
             </Link>
           </Grid>
-          <Button className="Login-button" type="submit" fullWidth variant="contained" color="primary" onClick={() => Router.push('/')}>
+          <Button className="login-button" type="submit" fullWidth variant="contained" color="primary" onClick={() => Router.push('/')}>
             {t('account:signin')}
           </Button>
           <Grid container>

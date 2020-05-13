@@ -1,13 +1,15 @@
 {
   "name": "company-web",
   "version": "1.0.0",
+  "sasslintConfig": "/.sass-lint.yml",
   "scripts": {
     "local": "NODE_ENV=test PORT=3000 ts-node --project tsconfig.server.json server/index.ts",
     "build": "next build",
     "start:prod": "NODE_ENV=production PORT=3000 ts-node --project tsconfig.server.json server/index.ts",
     "start:staging": "NODE_ENV=staging PORT=3000 ts-node --project tsconfig.server.json server/index.ts",
     "tslint": "tslint -p . -c tslint.json",
-    "test": "jest"
+    "test": "jest",
+    "sasslint": "sass-lint -c .sass-lint.yml -v -q"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.12",
@@ -27,7 +29,10 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "i18next-icu": "^1.1.2",
+    "jest": "^26.0.1",
+    "jest-cli": "^26.0.1",
     "next": "^9.3.5",
     "next-cookie": "^2.2.2",
     "next-i18next": "^2.0.0",
@@ -35,20 +40,18 @@
     "nextjs-fonts": "^0.22.0",
     "node-sass": "^4.14.0",
     "nodemon": "^1.19.4",
+    "puppeteer": "^3.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "sass-lint": "^1.12.1",
     "ts-node": "^8.9.1",
     "tslint-react": "^4.2.0",
     "tslint-react-hooks": "^2.2.2",
-    "typescript": "^3.8.3",
-    "faker": "^4.1.0",
-    "jest": "^26.0.1",
-    "jest-cli": "^26.0.1",
-    "puppeteer": "^3.0.3"
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
     "husky": "^4.2.5",
@@ -65,7 +68,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run tslint"
+      "pre-commit": "npm run tslint && npm run sasslint"
     }
   }
 }
