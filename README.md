@@ -15,7 +15,9 @@
 - Định nghĩa tên các file json để translate và namespaces phải theo tên của page muốn dùng.
 - Cần định nghĩa interface (type) cho action/props/state redux, mục đích chính của dùng typescript là đảm bảo data type không bị nhầm lẫn so với dùng javascript.
 - Sử dụng react và redux hooks triệt để, không được dùng class tối đa.
-- tên một trang cần có đuôi page.tsx
+- Tên một trang cần có đuôi page.tsx
+- Khi khởi tạo function return về dạng JSX.Element thì dùng keyword: const Example = () => {}.
+- Khi khởi tạo function xử lý logic bên trong thì dùng keyword: function exampleFunction() {}
 
 # Document for e2e testing:
 - Chạy test: npm run test
