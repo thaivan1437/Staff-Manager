@@ -15,11 +15,14 @@ beforeAll(async () => {
 
 describe('Home Page', () => {
   test('Typography loads correctly', async () => {
-    await page.goto(routes.private.home);
-    await page.waitForSelector('.appbar-tittle');
 
-    const html = await page.$eval('.appbar-tittle', (e) => e.innerHTML);
-    expect(html).toBe('COMPANY WEB');
+    await page.goto(routes.private.home);
+    await page.waitForSelector('.topbar__wrap--title');
+    const image = await page.screenshot();
+
+    expect(image).toMatchImageSnapshot();
+    const html = await page.$eval('.topbar__wrap--title', (e) => e.innerHTML);
+    expect(html).toBe('Dashboard');
   });
 });
 

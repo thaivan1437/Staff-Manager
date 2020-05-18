@@ -23,6 +23,9 @@ describe('Login Page', () => {
     await page.type('.login-email', person.email);
     await page.tap('.login-password');
     await page.type('.login-password', '123');
+    const image = await page.screenshot();
+
+    expect(image).toMatchImageSnapshot();
     await page.tap('.login-button');
     await page.waitForSelector('.login-title');
   });

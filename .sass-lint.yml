@@ -88,9 +88,6 @@ rules:
   placeholder-name-format:
     - 2
     - convention: hyphenatedlowercase
-  property-sort-order:
-    - 2
-    - ignore-custom-properties: false
   max-line-length:
     - 2
     - length: 80

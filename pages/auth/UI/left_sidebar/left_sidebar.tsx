@@ -37,6 +37,6 @@ const LeftSidebar: React.FunctionComponent = () => {
           </div>
         </Slider>
     </React.Fragment>
-  )
-}
-export default LeftSidebar
+  );
+};
+export default LeftSidebar;
