@@ -1,5 +1,5 @@
-import React from 'react'
-import { Toolbar, Typography } from '@material-ui/core'
+import React from 'react';
+import { Toolbar, Typography } from '@material-ui/core';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 
 const Sidebar = () => {

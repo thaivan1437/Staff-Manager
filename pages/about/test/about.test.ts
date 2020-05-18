@@ -16,13 +16,12 @@ beforeAll(async () => {
 describe('About Page', () => {
   test('About page is exists', async () => {
     await page.goto(routes.private.about);
-    await page.waitForSelector('.appbar-about');
+    await page.waitForSelector('.topbar__wrap--title');
+    const image = await page.screenshot();
 
-    await page.click('.appbar-about');
-    await page.waitForSelector('.appbar-tittle');
-
-    const html = await page.$eval('.appbar-tittle', (e) => e.innerHTML);
-    expect(html).toBe('COMPANY WEB');
+    expect(image).toMatchImageSnapshot();
+    const html = await page.$eval('.topbar__wrap--title', (e) => e.innerHTML);
+    expect(html).toBe('Dashboard');
   });
 });
 
