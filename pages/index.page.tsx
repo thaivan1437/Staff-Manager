@@ -1,30 +1,25 @@
-import React, { useEffect } from 'react';
-import { withTranslation, useTranslation } from '../i18n';
-import { useSelector, useDispatch } from 'react-redux';
-import Header from '../components/header';
-import Body from './home/UI/body';
-import Footer from '../components/footer';
-import { TFunction } from 'next-i18next';
-import { getDataThunkAction } from './home/logic/todo_reducer';
+import React from 'react';
+import { withTranslation } from '../i18n';
+import Header from '../components/topbar/header';
+import Sidebar from '../components/sidebar/sidebar';
+import { Grid } from '@material-ui/core';
+// import { TFunction } from 'next-i18next';
 
-interface DataType {
-  t: TFunction;
-}
+// interface DataType {
+//   t: TFunction;
+// }
 
 const Home = () => {
-  const { t }: DataType = useTranslation();
-  const content = useSelector((state) => state.todoReducer);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getDataThunkAction());
-  }, []);
-
   return (
     <React.Fragment>
-      <Header />
-      <Body t={t} title={content.data.title} />
-      <Footer />
+      <Grid container className="sidebar">
+        <Grid item md={3}>
+         <Sidebar />
+        </Grid>
+        <Grid item md={9}>
+          <Header />
+        </Grid>
+      </Grid>
     </React.Fragment>
   );
 };

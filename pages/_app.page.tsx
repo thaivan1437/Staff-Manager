@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import { makeStore } from '../redux/store';
@@ -7,24 +7,19 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import * as Sentry from '@sentry/browser';
 import ErrorBoundary from '../components/handle_errors/error_boundary';
 import '../styles/sass/index.sass';
-import getConfig from 'next/config';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { config } from '../helpers/get_config';
+// import { Login } from './auth/logic/login_actions';
 
-const { publicRuntimeConfig }: { publicRuntimeConfig: object } = getConfig();
-const ENV: string = publicRuntimeConfig['CLIENT_ENV'];
-const DNS: string = publicRuntimeConfig['DNS'];
-
-if (['production', 'staging'].includes(ENV)) {
+if (['production', 'staging'].includes(config.ENV)) {
   Sentry.init({
-    environment: ENV,
-    dsn: DNS,
+    environment: config.ENV,
+    dsn: config.DNS,
   });
 }
 
 const MyApp = ({ Component, pageProps, store }) => {
-  useEffect(() => {
-    void i18n.changeLanguage('vi');
-  }, []);
-
   const lng = i18n.language;
   const direction = i18n.dir(lng);
 

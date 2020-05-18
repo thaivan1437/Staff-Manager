@@ -1,4 +1,4 @@
-import { Link, i18n } from '../i18n';
+import { Link, i18n } from '../../i18n';
 import React from 'react';
 import { AppBar, Toolbar, Switch, Grid, FormControlLabel } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';

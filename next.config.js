@@ -1,6 +1,19 @@
 const withSass = require('@zeit/next-sass');
 const withFonts = require('nextjs-fonts');
 
+const dotenv = require('dotenv')
+const isDev = process.env.NODE_ENV === 'test';
+
+if (isDev)  {
+  dotenv.config({path: '.local.env'})
+}
+
+if (!isDev)  {
+  dotenv.config({path: `${process.env.NODE_ENV}.env`})
+}
+
+
+
 function HACK_removeMinimizeOptionFromSassLoaders(config) {
   console.warn(
     'HACK: Removing `minimize` option from `sass-loader` entries in Webpack config',
@@ -17,7 +30,6 @@ function HACK_removeMinimizeOptionFromSassLoaders(config) {
 }
 
 module.exports = () => {
-  const isDev = process.env.NODE_ENV === 'test';
 
   const config = {
     COMPANY_ENV: (() => {
@@ -33,7 +45,8 @@ module.exports = () => {
     })(),
     publicRuntimeConfig:  { 
       CLIENT_ENV: process.env.NODE_ENV,
-      DNS: 'https://5532e1ebb8be4e1cac7f5cded65a29ba@o374091.ingest.sentry.io/5222452'
+      DNS: 'https://5532e1ebb8be4e1cac7f5cded65a29ba@o374091.ingest.sentry.io/5222452',
+      API_HOST: process.env.API_HOST,
     },
     pageExtensions: ["page.tsx"],
   }
