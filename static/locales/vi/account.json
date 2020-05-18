@@ -3,9 +3,11 @@
   "yourPassword": "Mật khẩu",
   "enterEmail": "Làm ơn hãy nhập điạ chỉ email",
   "enterPassword": "Làm ơn hãy nhập mật khẩu",
-  "login": "Đăng Nhập",
-  "signin": "Đăng Nhập",
-  "signup": "Đăng Kí",
-  "forgotPassword": "Quên Mật Khẩu?",
-  "noAccount": "Chưa có tài khoản?"
+  "login": "Đăng nhập",
+  "logout": "Đăng xuất",
+  "signin": "Đăng nhập",
+  "signup": "Đăng kí",
+  "forgotPassword": "Quên mật khẩu?",
+  "noAccount": "Chưa có tài khoản?",
+  "signUpGoogle": "Đăng nhập với tài khoản Google"
 }

@@ -44,7 +44,7 @@ const nextI18nextInstance = new NextI18next({
   fallbackLng: 'vi',
   keySeparator: '###',
   localePath: 'static/locales',
-  otherLanguages: ['en'],
+  otherLanguages: ['vi', 'en'],
   localeSubpaths: {
     vi: 'vi',
     en: 'en',

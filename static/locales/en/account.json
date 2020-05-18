@@ -4,8 +4,10 @@
   "enterEmail": "Please enter your email address",
   "enterPassword": "Please enter your password",
   "login": "Login",
+  "logout": "Logout",
   "signin": "Sign in",
   "signup": "Sign up",
   "forgotPassword": "Forgot Password?",
-  "noAccount": "Do not have an account?"
+  "noAccount": "Do not have an account?",
+  "signUpGoogle": "Login with Google account"
 }
