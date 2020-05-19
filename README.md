@@ -34,6 +34,9 @@
 - Jest-image-snapshot doc: https://github.com/americanexpress/jest-image-snapshot
 - Example: https://blog.logrocket.com/end-to-end-testing-react-apps-with-puppeteer-and-jest-ce2f414b4fd7/
 
+## Document for storybook:
+- Chạy storybook: npm run storybook
+
 ## Cách fix TSLint errors:
 - no-floating-promises:
 ```typescript
