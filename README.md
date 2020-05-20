@@ -24,6 +24,9 @@
 - Khi khởi tạo function return về dạng JSX.Element thì dùng keyword: const Example = () => {}.
 - Khi khởi tạo function xử lý logic bên trong thì dùng keyword: function exampleFunction() {}
 
+## Document for NextJs:
+- https://nextjs.org/docs/basic-features/data-fetching.
+
 ## Document for e2e testing:
 - Chạy test: npm run test -- -u
 - Trước khi run test cần phải run trang web trước: npm run local (start:staging hoặc start:prod)

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { TFunction } from 'next-i18next';
-import { withTranslation, Router } from '../../i18n';
+import { withTranslation, useTranslation, Router } from '../../i18n';
 import { Grid, Button } from '@material-ui/core';
 import LeftSidebar from './UI/left_sidebar/left_sidebar';
 import { useDispatch } from 'react-redux';
@@ -10,11 +10,12 @@ import { config } from '../../helpers/get_config';
 interface DataType {
   t: TFunction;
 }
-type BodyProps = DataType;
 
 const linkAPI = `${config.API_HOST}/s1/auth/google`;
 
-const LoginPage: React.FunctionComponent<BodyProps> = ({ t }) => {
+const LoginPage = () => {
+  const { t }: DataType = useTranslation();
+
   const dispatch = useDispatch();
   useEffect(() => {
     const token = window.location.search;
@@ -39,11 +40,18 @@ const LoginPage: React.FunctionComponent<BodyProps> = ({ t }) => {
       </Grid>
       <Grid className="login-box" item md={8}>
         <Button variant="contained" color="primary" href={linkAPI}>
-          {t('account:signUpGoogle')}
+          {t('auth:signInGoogle')}
         </Button>
       </Grid>
     </Grid>
   </React.Fragment>
   );
 };
-export default withTranslation(['account'])(LoginPage);
+
+LoginPage.getInitialProps = async () => {
+  return {
+    namespacesRequired: ['auth'],
+  };
+};
+
+export default withTranslation(['auth'])(LoginPage);
