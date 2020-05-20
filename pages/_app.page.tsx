@@ -10,7 +10,6 @@ import '../styles/sass/index.sass';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { config } from '../helpers/get_config';
-// import { Login } from './auth/logic/login_actions';
 
 if (['production', 'staging'].includes(config.ENV)) {
   Sentry.init({

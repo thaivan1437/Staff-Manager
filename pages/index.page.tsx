@@ -1,15 +1,17 @@
-import React from 'react';
-import { withTranslation } from '../i18n';
+import React, { useEffect } from 'react';
+import { withTranslation, i18n } from '../i18n';
 import Header from '../components/topbar/header';
 import Sidebar from '../components/sidebar/sidebar';
 import { Grid } from '@material-ui/core';
-// import { TFunction } from 'next-i18next';
-
-// interface DataType {
-//   t: TFunction;
-// }
 
 const Home = () => {
+
+  useEffect(() => {
+    const lng = localStorage.getItem('lang') !== null && typeof localStorage !== 'undefined'
+    ? localStorage.getItem('lang') : 'vi';
+    void i18n.changeLanguage(String(lng));
+  }, []);
+
   return (
     <React.Fragment>
       <Grid container className="sidebar">
@@ -24,10 +26,10 @@ const Home = () => {
   );
 };
 
-Home.getInitialProps = () => {
+Home.getInitialProps = async () => {
   return {
-    namespacesRequired: ['home', 'footer'],
+    namespacesRequired: ['auth'],
   };
 };
 
-export default withTranslation(['home', 'footer'])(Home);
+export default withTranslation(['auth'])(Home);

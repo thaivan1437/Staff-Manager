@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AppBar, Toolbar, Switch, Grid, FormControlLabel, Input, Typography, Button } from '@material-ui/core';
-import { i18n, Router, useTranslation, withTranslation } from '../../i18n';
+import { i18n, Router, withTranslation } from '../../i18n';
 import { TFunction } from 'next-i18next';
 import { Logout } from '../../pages/auth/logic/login_actions';
 
@@ -9,18 +9,22 @@ interface DataType {
   t: TFunction;
 }
 
+type HeaderProps = DataType;
+
 async function onSwitchLanguage(event) {
   if (event.target.checked) {
     await i18n.changeLanguage('en');
+    localStorage.setItem('lang', i18n.language);
 
     return;
   }
   await i18n.changeLanguage('vi');
+  localStorage.setItem('lang', i18n.language);
 }
 
-const Header: React.FunctionComponent = () => {
-  const { t }: DataType = useTranslation();
+const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
   const dispatch = useDispatch();
+
   function logUserOut() {
     dispatch(Logout());
     if (typeof localStorage === 'undefined') {
@@ -39,7 +43,7 @@ const Header: React.FunctionComponent = () => {
       return (
         <React.Fragment>
           <Button variant="contained" color="primary" onClick={logUserOut}>
-            {t('account:logout')}
+            {t('auth:logout')}
           </Button>
         </React.Fragment>
       );
@@ -47,8 +51,8 @@ const Header: React.FunctionComponent = () => {
 
     return (
       <React.Fragment>
-        <Button variant="contained" color="primary" href="/auth/login">
-          {t('account:login')}
+        <Button variant="contained" color="primary" onClick={() => Router.push('/auth/login')}>
+          {t('auth:login')}
         </Button>
       </React.Fragment>
     );
@@ -85,4 +89,5 @@ const Header: React.FunctionComponent = () => {
   );
 
 };
-export default withTranslation(['account'])(Header);
+
+export default withTranslation('auth')(Header);

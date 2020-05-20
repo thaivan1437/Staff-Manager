@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../components/topbar/header';
+// import Header from '../../components/topbar/header';
 import Sidebar from '../../components/sidebar/sidebar';
 import { Grid } from '@material-ui/core';
 
@@ -11,7 +11,7 @@ const About = () => {
           <Sidebar />
         </Grid>
         <Grid container item md={9}>
-          <Header />
+          {/* <Header /> */}
         </Grid>
       </Grid>
     </React.Fragment>
