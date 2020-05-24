@@ -5,11 +5,12 @@ import { nextI18next } from '../i18n';
 import cookieParser from 'cookie-parser';
 
 // tslint:disable:no-console
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3005;
 const env = process.env.NODE_ENV || 'test';
 const isDev = env !== 'production' && env !== 'staging';
 const app = next({ dir: '.', dev: isDev });
 
+// todo: move this file to js for better performance of server-side rendering
 const handle = app.getRequestHandler();
 (async () => {
   try {

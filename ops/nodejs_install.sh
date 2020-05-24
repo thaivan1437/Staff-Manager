@@ -1,0 +1,1 @@
+apk add --no-cache python make g++ gcc git nodejs nodejs-npm && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && apk add --update graphicsmagick && rm -rf /var/cache/apk/*
