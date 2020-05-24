@@ -40,6 +40,24 @@
 ## Document for storybook:
 - Chạy storybook: npm run storybook
 
+## Config ESLint:
+- Install Extensions ESLint.
+- File > Preferences > Settings > Tab Extensions > Edit in setting.json > copy đoạn bên dưới > save.
+```
+"eslint.validate": [
+  "javascript",
+  "javascriptreact",
+  {
+    "language": "typescript",
+    "autoFix": true
+  },
+  {
+    "language": "typescriptreact",
+    "autoFix": true
+  }
+]
+```
+
 ## Cách fix TSLint errors:
 - no-floating-promises:
 ```typescript
