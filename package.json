@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "sasslintConfig": "/.sass-lint.yml",
   "scripts": {
-    "local": "NODE_ENV=test PORT=3000 ts-node --project tsconfig.server.json server/index.ts",
+    "local": "NODE_ENV=test PORT=3005 ts-node --project tsconfig.server.json server/index.ts",
     "build": "next build",
-    "start:prod": "NODE_ENV=production PORT=3000 ts-node --project tsconfig.server.json server/index.ts",
-    "start:staging": "NODE_ENV=staging PORT=3000 ts-node --project tsconfig.server.json server/index.ts",
+    "start:prod": "NODE_ENV=production PORT=3005 ts-node --project tsconfig.server.json server/index.ts",
+    "start:staging": "NODE_ENV=staging PORT=3005 ts-node --project tsconfig.server.json server/index.ts",
     "tslint": "tslint -p . -c tslint.json",
     "test": "jest",
     "sasslint": "sass-lint -c .sass-lint.yml -v -q",

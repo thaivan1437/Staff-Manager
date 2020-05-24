@@ -1,4 +1,4 @@
-export const appUrlBase: string = 'http://localhost:3000';
+export const appUrlBase: string = 'http://localhost:3005';
 
 export const routes = {
   public: {
