@@ -35,6 +35,9 @@ test:
     - npm run test -- -u
     - . ops/git_push_build.sh
   except: 
+    refs:
+      - master
+      - dev
     variables:
       - $CI_COMMIT_MESSAGE =~ /upload latest screenshots/
       - $CI_COMMIT_BRANCH == "master" && $CI_COMMIT_BRANCH == "dev" 
