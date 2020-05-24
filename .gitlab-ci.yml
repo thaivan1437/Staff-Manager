@@ -37,7 +37,7 @@ test:
   except: 
     variables:
       - $CI_COMMIT_MESSAGE =~ /upload latest screenshots/
-      - $BRANCH == "master" && $BRANCH == "dev" 
+      - $CI_COMMIT_BRANCH == "master" && $CI_COMMIT_BRANCH == "dev" 
 
 dev-test-build:
   stage: dev-test-build
