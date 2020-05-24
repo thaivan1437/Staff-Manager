@@ -36,6 +36,7 @@
     "babel-preset-react-app": "^9.1.2",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
+    "eslint-plugin-react-hooks": "0.0.0-33c3af284",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "husky": "^4.2.5",
