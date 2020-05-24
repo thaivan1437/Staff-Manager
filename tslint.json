@@ -34,7 +34,6 @@
         "detect-hooks-from-non-react-namespace": true
       }
     },
-    "exhaustive-deps": "warn",
     "semicolon": [true, "always"],
     "await-promise": true,
     "no-async-without-await": true,
