@@ -6,7 +6,7 @@ ADD package.json /tmp/
 
 WORKDIR /app
 
-RUN cd /tmp/ && npm install && mv /tmp/node_modules /app/node_modules
+RUN cd /tmp/ &&  npm install --only=prod && mv /tmp/node_modules /app/node_modules
 
 ADD . /app
 
@@ -14,4 +14,4 @@ RUN cd /app/ && npm run build
 
 EXPOSE 3005/tcp
 
-CMD ["npm", "run start:prod"]
+CMD ["npm", "start"]

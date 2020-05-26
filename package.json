@@ -7,6 +7,7 @@
     "build": "next build",
     "start:prod": "NODE_ENV=production PORT=3005 ts-node --project tsconfig.server.json server/index.ts",
     "start:staging": "NODE_ENV=staging PORT=3005 ts-node --project tsconfig.server.json server/index.ts",
+    "start": "ts-node --project tsconfig.server.json server/index.ts",
     "tslint": "tslint -p . -c tslint.json",
     "test": "jest",
     "sasslint": "sass-lint -c .sass-lint.yml -v -q",
