@@ -21,7 +21,9 @@
     "sourceMap": true,
     "baseUrl": "./",
     "paths": {
-      "@components/*": ["./components/*"]
+      "@components/*": [
+        "./components/*"
+      ]
     },
     "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,
