@@ -23,6 +23,7 @@ test:
   script:
     - . ops/git_init.sh
     - npm install
+    - npm run linter-folder
     - npm run tslint
     - npm run sasslint
     - npm run build

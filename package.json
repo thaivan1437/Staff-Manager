@@ -10,6 +10,7 @@
     "start": "ts-node --project tsconfig.server.json server/index.ts",
     "tslint": "tslint -p . -c tslint.json",
     "test": "jest",
+    "linter-folder": "ts-node --project tsconfig.server.json linter_folder.ts",
     "sasslint": "sass-lint -c .sass-lint.yml -v -q",
     "storybook": "start-storybook -p 6006 -c .storybook"
   },
@@ -36,6 +37,7 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-react-app": "^9.1.2",
     "cookie-parser": "^1.4.5",
+    "directory-tree": "^2.2.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "i18next-icu": "^1.1.2",
@@ -44,7 +46,7 @@
     "next-i18next": "^2.0.0",
     "next-redux-wrapper": "^5.0.0",
     "nextjs-fonts": "^0.22.0",
-    "node-sass": "^4.14.0",
+    "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -84,7 +86,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run tslint && npm run sasslint"
+      "pre-commit": "npm run linter-folder && npm run tslint && npm run sasslint"
     }
   }
 }
