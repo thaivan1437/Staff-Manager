@@ -12,6 +12,7 @@ services:
 
 stages:
   - test
+  - confirm-pipeline
   - dev-test-build
   - dev-deploy
   - prod-test-build
@@ -40,6 +41,18 @@ test:
     variables:
       - $CI_COMMIT_MESSAGE =~ /upload latest screenshots/
       - $CI_COMMIT_BRANCH == "master" && $CI_COMMIT_BRANCH == "dev" 
+      
+confirm-pipeline:
+  image: alpine
+  stage: confirm-pipeline
+  when: always
+  script:
+    - echo "this job is to confirm pipeline success only"
+    
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /upload latest screenshots/
+
 
 dev-test-build:
   stage: dev-test-build
