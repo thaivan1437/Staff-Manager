@@ -18,8 +18,8 @@ describe('Auth Page', () => {
   test('test', async () => {
 
     await page.goto(routes.private.home);
-    await page.waitForSelector('.topbar__wrap--title');
-    const html = await page.$eval('.topbar__wrap--title', (e) => e.innerHTML);
+    await page.waitForSelector('.dashboard--title');
+    const html = await page.$eval('.dashboard--title', (e) => e.innerHTML);
     expect(html).toBe('Dashboard');
   });
 });

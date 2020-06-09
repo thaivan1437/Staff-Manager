@@ -6,6 +6,7 @@ import LeftSidebar from './UI/left_sidebar/left_sidebar';
 import { useDispatch } from 'react-redux';
 import { Login } from './logic/login_actions';
 import { config } from '../../helpers/get_config';
+import { getIDUSERThunkAction } from './logic/login_reducer';
 
 interface DataType {
   t: TFunction;
@@ -22,24 +23,28 @@ const LoginPage = () => {
     if (!token) {
       return;
     }
-    const accessToken = token.substr(7);
+    const accessToken = token.replace('?token=', '');
     localStorage.setItem('access_token', accessToken);
     void logUserIn(accessToken);
+
   }, []);
 
   async function logUserIn(token: string) {
-    await dispatch(Login(token));
+    await Promise.all([
+      dispatch(getIDUSERThunkAction(token)),
+      dispatch(Login(token)),
+    ]);
     void Router.push('/');
   }
 
   return  (
   <React.Fragment>
     <Grid container>
-      <Grid className="" item md={4}>
+      <Grid className='' item md={4}>
         <LeftSidebar />
       </Grid>
-      <Grid className="login-box" item md={8}>
-        <Button variant="contained" color="primary" href={linkAPI}>
+      <Grid className='login-box' item md={8}>
+        <Button variant='contained' color='primary' href={linkAPI}>
           {t('auth:signInGoogle')}
         </Button>
       </Grid>

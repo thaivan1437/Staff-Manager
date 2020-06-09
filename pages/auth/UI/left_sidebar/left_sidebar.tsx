@@ -17,19 +17,19 @@ const LeftSidebar: React.FunctionComponent = () => {
   return (
       <React.Fragment>
         <Slider {...setting}>
-          <div className="left-sidebar">
-            <div className="left-sidebar__item">
-              <Typography className="left-sidebar__title" variant="h5" align="center">Perfect Balance</Typography>
-              <p className="left-sidebar__description">
+          <div className='left-sidebar'>
+            <div className='left-sidebar__item'>
+              <Typography className='left-sidebar__title' variant='h5' align='center'>Perfect Balance</Typography>
+              <p className='left-sidebar__description'>
                 ArchitectUI is like a dream.
                 Some think it's too good to be true! Extensive collection of unified Vue Bootstrap Components and Elements.
               </p>
             </div>
           </div>
-          <div className="left-sidebar">
-            <div className="left-sidebar__item">
-              <Typography className="left-sidebar__title" variant="h5" align="center">Perfect Balance</Typography>
-              <p className="left-sidebar__description">
+          <div className='left-sidebar'>
+            <div className='left-sidebar__item'>
+              <Typography className='left-sidebar__title' variant='h5' align='center'>Perfect Balance</Typography>
+              <p className='left-sidebar__description'>
                 ArchitectUI is like a dream.
                 Some think it's too good to be true! Extensive collection of unified Vue Bootstrap Components and Elements.
               </p>

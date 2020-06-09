@@ -9,7 +9,7 @@ if (isDev)  {
 }
 
 if (!isDev)  {
-  dotenv.config({path: `${process.env.NODE_ENV}.env`})
+  dotenv.config({path: `.${process.env.NODE_ENV}.env`})
 }
 
 

@@ -12,7 +12,8 @@
     "test": "jest",
     "linter-folder": "ts-node --project tsconfig.server.json linter_folder.ts",
     "sasslint": "sass-lint -c .sass-lint.yml -v -q",
-    "storybook": "start-storybook -p 6006 -c .storybook"
+    "storybook": "start-storybook -p 6006 -c .storybook",
+    "tslintFix": "tslint --fix -p . -c  tslint.json"
   },
   "dependencies": {
     "@babel/core": "^7.9.6",

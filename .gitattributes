@@ -1,0 +1,18 @@
+# (binary is a macro for -text -diff)
+**/*.png diff=image -text
+**/*.jpg diff=image -text
+**/*.jpeg diff=image -text
+**/*.svg binary
+**/*.gif binary
+**/*.ico binary
+**/*.flv binary
+**/*.fla binary
+**/*.swf binary
+**/*.gz binary
+**/*.zip binary
+**/*.7z binary
+**/*.ttf binary
+**/*.eot binary
+**/*.woff binary
+**/*.pyc binary
+**/*.pdf binary

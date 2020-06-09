@@ -14,7 +14,7 @@ export const todoReducer = (state = initialState, action) => {
     case 'FETCH_DATA':
       return {
         ...state,
-        data: action.data,
+        datae: action.data,
       };
     default:
       return state;

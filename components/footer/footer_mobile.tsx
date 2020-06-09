@@ -28,79 +28,79 @@ const FooterMobile: React.FunctionComponent<FooterProps> = ({ t }) => {
   }
 
   return (
-    <AppBar position="static">
+    <AppBar position='static'>
       <Toolbar>
-        <Grid container direction="row" alignItems="center">
-          <Grid container item justify="center" xs={4}>
-            <Link href="/">
-              <Button color="primary" disableRipple={true}>
-                <Grid container justify="center" alignItems="center" direction="column">
+        <Grid container direction='row' alignItems='center'>
+          <Grid container item justify='center' xs={4}>
+            <Link href='/'>
+              <Button color='primary' disableRipple={true}>
+                <Grid container justify='center' alignItems='center' direction='column'>
                   <HomeIcon />
                   {t('common:home')}
                 </Grid>
               </Button>
             </Link>
           </Grid>
-          <Grid container item justify="center" xs={4}>
-            <Button color="primary" disableRipple={true} onClick={handleDisplayFollowUs}>
-              <Grid container justify="flex-end" alignItems="center" direction="column">
+          <Grid container item justify='center' xs={4}>
+            <Button color='primary' disableRipple={true} onClick={handleDisplayFollowUs}>
+              <Grid container justify='flex-end' alignItems='center' direction='column'>
                 <Fab>
-                  <AddCircleIcon fontSize="large" color="primary" />
+                  <AddCircleIcon fontSize='large' color='primary' />
                 </Fab>
                 <br/>
                 {t('common:followUs')}
               </Grid>
             </Button>
           </Grid>
-          <Grid container item justify="center" xs={4}>
-            <Button color="primary" disableRipple={true} onClick={handleDisplayMore}>
-              <Grid container justify="center" alignItems="center" direction="column">
+          <Grid container item justify='center' xs={4}>
+            <Button color='primary' disableRipple={true} onClick={handleDisplayMore}>
+              <Grid container justify='center' alignItems='center' direction='column'>
                 <MoreIcon />
                 {t('common:more')}
               </Grid>
             </Button>
           </Grid>
         </Grid>
-        <Collapse in={isDisplayFolowUs} timeout="auto" unmountOnExit>
-          <Grid container direction="row" justify="space-evenly" alignItems="center">
-            <Link href="/#">
+        <Collapse in={isDisplayFolowUs} timeout='auto' unmountOnExit>
+          <Grid container direction='row' justify='space-evenly' alignItems='center'>
+            <Link href='/#'>
               <Facebook/>
             </Link>
-            <Link href="/#">
+            <Link href='/#'>
               <Twitter/>
             </Link>
-            <Link href="/#">
+            <Link href='/#'>
               <YouTube/>
             </Link>
-            <Link href="/#">
+            <Link href='/#'>
               <Instagram/>
             </Link>
           </Grid>
         </Collapse>
-        <Collapse in={isDisplayMore} timeout="auto" unmountOnExit>
-          <Grid container direction="column" justify="center" alignItems="center">
-            <Link href="/#">
-              <Typography component="h1" gutterBottom align="left">
+        <Collapse in={isDisplayMore} timeout='auto' unmountOnExit>
+          <Grid container direction='column' justify='center' alignItems='center'>
+            <Link href='/#'>
+              <Typography component='h1' gutterBottom align='left'>
                 {t('footer:terms&conditions')}
               </Typography>
             </Link>
-            <Link href="/#">
-              <Typography component="h1" gutterBottom align="left">
+            <Link href='/#'>
+              <Typography component='h1' gutterBottom align='left'>
                 {t('footer:privacypolicy')}
               </Typography>
             </Link>
-            <Link href="/#">
-              <Typography component="h1" gutterBottom align="left">
+            <Link href='/#'>
+              <Typography component='h1' gutterBottom align='left'>
                 {t('footer:newsletter')}
               </Typography>
             </Link>
-            <Link href="/#">
-              <Typography component="h1" gutterBottom align="left">
+            <Link href='/#'>
+              <Typography component='h1' gutterBottom align='left'>
                 {t('footer:contactus')}
               </Typography>
             </Link>
-            <Link href="/#">
-              <Typography component="h1" gutterBottom align="left">
+            <Link href='/#'>
+              <Typography component='h1' gutterBottom align='left'>
                 {t('footer:eventsCalendar')}
               </Typography>
             </Link>
