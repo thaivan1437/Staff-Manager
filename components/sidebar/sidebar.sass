@@ -1,3 +1,159 @@
-.sidebar
-  background: color-primary
+$color-btn-slider: #e0f3ff
+$color: #3f6ad8
+$bg-header: #fafbfc
+$bg-btn-slider: #3f6ad8
+$black: #000
+$white: #fff
+$after-slide: #e0f3ff
+
+.bg__slider
+  background-color: $bg-header
+  padding: 0 1rem
+
+.btn--slider
+  background: transparent
+  border: 0
+  cursor: pointer
+  font-size: .8rem
+  outline: 0
+  padding: 0 1rem
+  transition: ease-in .1s
+
+  a
+    text-decoration: unset
+
+  &.bold
+    font-weight: bold
+  
+  &:hover 
+    background: $color-btn-slider
+    color: $bg-btn-slider
+
+
+.box__slidebar
+  &.MuiAppBar-colorPrimary
+    background: $white
+    box-shadow: none
+
+  ::focus
+    border: 0
+    outline: 0
+
+.card__header
+  background: $white
+  color: $color
+  font-size: 1rem
+  font-weight: bold
+  margin: .75rem 0
+  padding: 0 1rem
+  position: relative
+  text-transform: uppercase
+  transition: ease-in .1s
+  white-space: nowrap
+
+.card__list
+  padding: 0 1rem
+
+.flex
+  display: flex
+
+.flex-wrap
+  flex-wrap: wrap
+
+.justify-between
   justify-content: space-between
+
+.items-center
+  align-items: center
+  text-align: center
+
+.nonactive
+  .topbar__wrap--title
+    display: none
+
+  .btn--slider 
+    .hiddenOn
+      display: none
+
+  .card__header
+    visibility: hidden
+
+  &:hover 
+    .card__header
+      visibility: unset
+
+    .topbar__wrap--title
+      display: flex
+
+    .btn--slider 
+      .hiddenOn
+        display: flex
+
+
+
+.slide__bar
+  background: $white
+  min-height: 100vh
+
+.slide__bar 
+  .active
+    transition: ease all .2s
+    width: 300px
+  
+  &:hover 
+    .nonactive
+      transition: ease all .2s
+      width: 300px
+  
+  .nonactive
+    width: 80px
+
+
+.slidebar__collapse
+  display: block
+  height: auto
+  max-height: 0
+  transform: scaleY(0)
+  transform-origin: top
+  transition: all .26s ease
+
+  &.show
+    margin: .3rem 0
+    max-height: 600px
+    transform: scaleY(1)
+
+.slidebar__collapse--item 
+  a
+    color: $black
+    display: block
+    height: 1.9rem
+    line-height: 1.9rem
+    padding: 0 1rem
+    text-decoration: unset
+
+    &:hover
+      background: $color-btn-slider
+      color: $bg-btn-slider
+
+.slidebar__collapse--list
+  padding: .75rem 0 .75rem 2.25rem
+  position: relative
+
+  ::before
+    background: $after-slide
+    border-radius: 15px
+    content: ''
+    height: 100%
+    left: 20px
+    opacity: 1
+    position: absolute
+    top: 0
+    width: 3px
+
+
+.w--300
+  width: 300px
+
+.w__full
+  transition: ease-in .2s
+  width: 100%

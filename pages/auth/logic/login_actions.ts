@@ -10,3 +10,9 @@ export const Logout = () => {
     token: '',
   };
 };
+export const GetUserID = (userid: object) => {
+  return {
+    type: 'GET_USERID',
+    payload: userid,
+  };
+};

@@ -17,11 +17,11 @@ describe('Home Page', () => {
   test('Typography loads correctly', async () => {
 
     await page.goto(routes.private.home);
-    await page.waitForSelector('.topbar__wrap--title');
+    await page.waitForSelector('.dashboard--title');
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot();
-    const html = await page.$eval('.topbar__wrap--title', (e) => e.innerHTML);
+    const html = await page.$eval('.dashboard--title', (e) => e.innerHTML);
     expect(html).toBe('Dashboard');
   });
 });

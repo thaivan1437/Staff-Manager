@@ -14,24 +14,24 @@ const HeaderMobile: React.FunctionComponent = () => {
   }
 
   return (
-    <AppBar position="static">
+    <AppBar position='static'>
       <Toolbar>
-        <Grid container direction="row" alignItems="center">
-          <Grid container item xs={8} justify="flex-start">
+        <Grid container direction='row' alignItems='center'>
+          <Grid container item xs={8} justify='flex-start'>
             <FormControlLabel
               control={
                 <Switch
                   onChange={onSwitchLanguage}
-                  value="checked"
-                  color="primary"
+                  value='checked'
+                  color='primary'
                   checked={i18n.language ? !(i18n.language === 'vi') : false}
                 />
               }
-              labelPlacement="start"
+              labelPlacement='start'
               label={i18n.language ? i18n.language.toUpperCase() : 'VI'}
             />
-            <Link href="/account/UI/login">
-              <PersonIcon fontSize="large"/>
+            <Link href='/account/UI/login'>
+              <PersonIcon fontSize='large'/>
             </Link>
           </Grid>
         </Grid>
