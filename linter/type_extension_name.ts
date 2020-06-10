@@ -1,6 +1,6 @@
 const regexT = new RegExp('.sass$|.tsx$|.stories.tsx$');
 const regexStories = new RegExp('.stories.tsx$');
-const regexTsx = new RegExp('.tsx$');
+const regexTsx = new RegExp('^(?:(?!stories.tsx$).)*(.tsx)$');
 const regexSass = new RegExp('.sass$');
 const arrRegex = [regexStories, regexTsx, regexSass];
 

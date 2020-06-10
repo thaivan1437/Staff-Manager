@@ -37,8 +37,8 @@ function checkEachFolder(path) {
   const isValid = arr.every((each) => tree.children.some((child) => child.name === each));
 
   if (!isValid) {
-    console.log(`Error: ${tree.name}`);
-    console.log('Each folder in the page should have three folders: UI, logic, test');
+    console.log(`Error folder in pages: ${tree.name}`);
+    console.log('Each folder in the pages should have three folders: UI, logic, test');
     process.exit(1);
   }
 

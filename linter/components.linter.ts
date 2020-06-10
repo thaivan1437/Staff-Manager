@@ -1,4 +1,5 @@
 import { checkType,  checkName } from './type_extension_name';
+import checkRequiredFiles from './required_files';
 
 // tslint:disable:no-console
 export default function linterComponents(componentsTree) {
@@ -23,6 +24,13 @@ export default function linterComponents(componentsTree) {
     }
 
     if (isValidName) {
+      item.children.forEach((element) => {
+        const firstName = element.name.substring(0, element.name.indexOf('.'));
+        const extensions = ['.stories.tsx', '.tsx'];
+
+        error = error + checkRequiredFiles(firstName, extensions, item.children, item.path);
+      });
+
       continue;
     }
 

@@ -1,19 +1,19 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { TFunction } from 'next-i18next';
+// import { TFunction } from 'next-i18next';
 import { AppBar, Toolbar, Grid, Button, Fab, Collapse, Typography } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import MoreIcon from '@material-ui/icons/More';
 import { Facebook, Twitter, YouTube, Instagram } from '@material-ui/icons';
 
-interface DataType {
-  t: TFunction;
-}
+// interface DataType {
+//   t: TFunction;
+// }
 
-type FooterProps = DataType;
+// type FooterProps = DataType;
 
-const FooterMobile: React.FunctionComponent<FooterProps> = ({ t }) => {
+const FooterMobile: React.FunctionComponent = () => {
   const [isDisplayFolowUs, onDisplayFollowUs] = useState(false);
   const [isDisplayMore, onDisplayMore] = useState(false);
 
@@ -36,7 +36,7 @@ const FooterMobile: React.FunctionComponent<FooterProps> = ({ t }) => {
               <Button color='primary' disableRipple={true}>
                 <Grid container justify='center' alignItems='center' direction='column'>
                   <HomeIcon />
-                  {t('common:home')}
+                  {/* {t('common:home')} */}
                 </Grid>
               </Button>
             </Link>
@@ -48,7 +48,7 @@ const FooterMobile: React.FunctionComponent<FooterProps> = ({ t }) => {
                   <AddCircleIcon fontSize='large' color='primary' />
                 </Fab>
                 <br/>
-                {t('common:followUs')}
+                {/* {t('common:followUs')} */}
               </Grid>
             </Button>
           </Grid>
@@ -56,7 +56,7 @@ const FooterMobile: React.FunctionComponent<FooterProps> = ({ t }) => {
             <Button color='primary' disableRipple={true} onClick={handleDisplayMore}>
               <Grid container justify='center' alignItems='center' direction='column'>
                 <MoreIcon />
-                {t('common:more')}
+                {/* {t('common:more')} */}
               </Grid>
             </Button>
           </Grid>
@@ -81,27 +81,27 @@ const FooterMobile: React.FunctionComponent<FooterProps> = ({ t }) => {
           <Grid container direction='column' justify='center' alignItems='center'>
             <Link href='/#'>
               <Typography component='h1' gutterBottom align='left'>
-                {t('footer:terms&conditions')}
+                {/* {t('footer:terms&conditions')} */}
               </Typography>
             </Link>
             <Link href='/#'>
               <Typography component='h1' gutterBottom align='left'>
-                {t('footer:privacypolicy')}
+                {/* {t('footer:privacypolicy')} */}
               </Typography>
             </Link>
             <Link href='/#'>
               <Typography component='h1' gutterBottom align='left'>
-                {t('footer:newsletter')}
+                {/* {t('footer:newsletter')} */}
               </Typography>
             </Link>
             <Link href='/#'>
               <Typography component='h1' gutterBottom align='left'>
-                {t('footer:contactus')}
+                {/* {t('footer:contactus')} */}
               </Typography>
             </Link>
             <Link href='/#'>
               <Typography component='h1' gutterBottom align='left'>
-                {t('footer:eventsCalendar')}
+                {/* {t('footer:eventsCalendar')} */}
               </Typography>
             </Link>
           </Grid>

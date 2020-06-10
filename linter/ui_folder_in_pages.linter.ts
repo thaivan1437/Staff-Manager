@@ -1,33 +1,42 @@
-import { checkType, checkName } from './type_extension_name';
-
 // tslint:disable:no-console
-export default function linterFolderUI(child) {
+export default function linterFolderUI(folder) {
   let error = 0;
+  const regexStories = new RegExp('.stories.tsx$');
+  const regexTsx = new RegExp('^(?:(?!stories.tsx$).)*(.tsx)$');
+  const regexSass = new RegExp('.sass$');
+  const regexT = new RegExp('.sass$|.tsx$|.stories.tsx$');
+  const arrRegex = [regexStories, regexTsx, regexSass];
 
-  for (const each of child.children) {
-    if (each.type === 'file' && each.extension !== '.sass' && each.extension !== '.tsx') {
-      error += 1;
-      console.log(`Error: ${each.path}`);
-      console.log('You cannot put other file formats here');
-    }
-
-    if (each.type !== 'directory') {
+  for (const element of folder.children) {
+    if (element.type !== 'file') {
       continue;
     }
-    const isValidType = checkType(each);
 
-    const isValidName = checkName(each);
+    const isValidFile = regexT.test(element.name);
 
-    if (!isValidType) {
-      error += 1;
-    }
-
-    if (isValidName) {
+    if (isValidFile) {
       continue;
     }
 
     error += 1;
+    console.log(`Error: ${element.path}`);
+    console.log('You cannot put other file formats here');
+  }
 
+  const isValidFolder = arrRegex.every((each) => folder.children.some((child) => {
+    if (child.type === 'file') {
+      const isRightFormat = each.test(child.name);
+
+      return isRightFormat;
+    }
+
+    linterFolderUI(child);
+  }));
+
+  if (!isValidFolder) {
+    error += 1;
+    console.log(`Error: ${folder.path}`);
+    console.log('Folder here should have these three types of file extensions only: .stories.tsx, .tsx, .sass');
   }
 
   return error;
