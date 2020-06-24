@@ -1,9 +1,11 @@
 import { routes } from '../../../constants/routes';
 import { getTokenAuth } from '../../../helpers/get_token';
+import { Viewport } from '../../../constants/view_port';
 
 let browser;
 let page;
 let token;
+let viewport;
 
 const puppeteer = require('puppeteer');
 beforeAll(async () => {
@@ -11,13 +13,11 @@ beforeAll(async () => {
     headless: true,
     slowMo: 120,
     ignoreDefaultArgs: ['--no-sandbox'],
+    args: ['--start-maximized'],
   });
   token = await getTokenAuth();
   page = await browser.newPage();
-  // goi lai effect token roi luu vao store
-  // await page.evaluate(() => {
-  //   localStorage.setItem('access_token', token);
-  // });
+  viewport = await page.setViewport(Viewport);
 });
 
 describe('Profiles Page', () => {

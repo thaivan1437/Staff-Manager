@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { AppBar, Toolbar, Switch, Grid, FormControlLabel, Input, Typography, Button } from '@material-ui/core';
+import { AppBar, Toolbar, Switch, Grid, FormControlLabel, Input, InputAdornment, Typography, Button } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 import { i18n, Router, withTranslation } from '../../i18n';
 import { TFunction } from 'next-i18next';
 import { Logout, Login } from '../../pages/auth/logic/login_actions';
 import { getIDUSERThunkAction } from 'pages/auth/logic/login_reducer';
-
 interface DataType {
   t: TFunction;
 }
@@ -27,22 +27,19 @@ async function onSwitchLanguage(event) {
 
 const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     let token: Token = window.location.search;
-
     if (!token && typeof localStorage !== 'undefined') {
       token = localStorage.getItem('access_token');
     }
-
     if (!token) {
       return;
     }
     const accessToken = token.replace('?token=', '');
     localStorage.setItem('access_token', accessToken);
     void logUserIn(accessToken);
-
   }, []);
-
   async function logUserIn(token: string) {
     await Promise.all([
       dispatch(getIDUSERThunkAction(token)),
@@ -60,14 +57,11 @@ const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
   }
 
   const ActionUser = () => {
-    if (typeof localStorage === 'undefined') {
-      return <div/>;
-    }
-    const tokenAuth = localStorage.getItem('access_token');
+    const tokenAuth = typeof localStorage !== 'undefined' && localStorage.getItem('access_token');
     if (tokenAuth) {
       return (
         <React.Fragment>
-          <Button variant='contained' color='primary' onClick={logUserOut}>
+          <Button className='logout__btn' variant='contained' onClick={logUserOut}>
             {t('auth:logout')}
           </Button>
         </React.Fragment>
@@ -76,7 +70,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
 
     return (
       <React.Fragment>
-        <Button variant='contained' color='primary' onClick={() => Router.push('/auth/login')}>
+        <Button className='logout__btn' variant='contained' onClick={() => Router.push('/auth/login')}>
           {t('auth:login')}
         </Button>
       </React.Fragment>
@@ -84,33 +78,43 @@ const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
   };
 
   return (
-    <AppBar position='relative' className='topbar'>
-      <Toolbar className='topbar__wrap'>
-        <Grid container alignItems='center'>
-          <Grid item md={7}>
-            <Typography className='topbar__wrap--title'>Dashboard</Typography>
-          </Grid>
-          <Grid container item sm={4} md={5} alignContent='flex-end'>
-            <form noValidate autoComplete='off'>
-              <Input placeholder='Search' inputProps={{ 'aria-label': 'description' }} />
-            </form>
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={onSwitchLanguage}
-                  value='checked'
-                  color='default'
-                  checked={i18n.language ? !(i18n.language === 'vi') : false}
+    <div className='topbar'>
+      <AppBar position='relative' className='topbar__bg'>
+        <Toolbar className='topbar__wrap'>
+          <Grid container alignItems='center'>
+            <Grid item md={6}>
+              <Typography variant='h6' className='topbar__wrap--title'>Dashboard</Typography>
+            </Grid>
+            <Grid container item md={6} alignContent='flex-end' justify='space-between'>
+                <Input
+                  className='topbar__search'
+                  placeholder='Search'
+                  disableUnderline={true}
+                  type='search'
+                  endAdornment={
+                    <InputAdornment position='end'>
+                      <SearchIcon />
+                    </InputAdornment>
+                  }
                 />
-              }
-              labelPlacement='start'
-              label={i18n.language ? i18n.language.toUpperCase() : 'VI'}
-            />
-            <ActionUser />
+                <FormControlLabel
+                  control={
+                    <Switch
+                      onChange={onSwitchLanguage}
+                      value='checked'
+                      color='default'
+                      checked={i18n.language ? !(i18n.language === 'vi') : false}
+                    />
+                  }
+                  labelPlacement='start'
+                  label={i18n.language ? i18n.language.toUpperCase() : 'VI'}
+                />
+                <ActionUser />
+            </Grid>
           </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 
 };

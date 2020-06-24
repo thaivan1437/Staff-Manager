@@ -1,0 +1,47 @@
+$shadow: 'rgb(183, 215, 255, .3)'
+$color-input: #40a6f2
+
+.fields
+  padding: 35px 50px
+  background: $color-white
+
+.fields__input
+  input
+    background: linear-gradient(45deg, $white 30%, $white 90%)
+    border-radius: 3px
+    height: 48px
+    padding: 0 30px
+    box-shadow: 0 3px 5px 2px $shadow
+    margin: 20px 0
+    border: 1px solid $color-input
+    width: 100
+
+    :focus
+      outline: none
+      border: 0
+
+.fields__success
+  border: 1px solid $color-blue--light
+  padding: 10px 15px
+  border-radius: 3px
+  margin: 15px 0
+  color: $color-blue--light
+  background-color: $color-blue--linear
+  border-color: $color-blue--light
+  width: 400px
+  text-align: center
+
+.fields__fail
+  color: $color-red--bold
+  background-color: $color-red--light
+  border-color: $color-red--lighter
+  padding: 10px 15px
+  border-radius: 3px
+  margin: 15px 0
+  width: 400px
+  text-align: center
+
+.fields__create
+  .MuiButton-contained
+    background-color: $color-blue
+    color: $color-white

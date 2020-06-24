@@ -1,0 +1,16 @@
+{
+  "companies": "Công ty",
+  "name": "Tên",
+  "address": "Địa chỉ",
+  "fieldsid": "Fields Id",
+  "intro": "Giới thiệu",
+  "callLimit": "Giới hạn cuộc gọi",
+  "ownedAmount": "Tiền sở hữu",
+  "paidAmount": "Tiền thanh toán",
+  "monthLimit": "Giới hạn tháng",
+  "companiesList": "Danh sách công ty",
+  "update": "Cập nhật",
+  "updating": "Đang cập nhật",
+  "updateSuccess": "Cập nhật thành công",
+  "updateFail": "Cập nhật thất bại"
+}

@@ -4,10 +4,12 @@ import { GetUserID } from './login_actions';
 interface LoginValue {
   value: string;
   userID: string;
+  companyID: string;
 }
 const initialState: LoginValue = {
   value: '',
   userID: '',
+  companyID: '',
 };
 export const auth = (state = initialState, action) => {
   switch (action.type) {
@@ -25,6 +27,7 @@ export const auth = (state = initialState, action) => {
       return {
         ...state,
         userID: action.payload.userID,
+        companyID: action.payload.companyIDs[0],
       };
     default:
       return state;
