@@ -1,0 +1,16 @@
+{
+  "companies": "Companies",
+  "name": "Name",
+  "address": "Address",
+  "fieldsid": "Fields Id",
+  "intro": "Intro",
+  "callLimit": "Call limit",
+  "ownedAmount": "Owned Amount",
+  "paidAmount": "Paid Amount",
+  "monthLimit": "Month Limit",
+  "companiesList": "Companies list",
+  "update": "Update",
+  "updating": "Updating",
+  "updateSuccess": "Update success",
+  "updateFail": "Update Fail"
+}

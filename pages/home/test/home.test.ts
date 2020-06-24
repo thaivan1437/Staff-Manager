@@ -1,7 +1,9 @@
 import { routes } from '../../../constants/routes';
+import { Viewport } from '../../../constants/view_port';
 
 let browser;
 let page;
+let viewport;
 
 const puppeteer = require('puppeteer');
 beforeAll(async () => {
@@ -9,8 +11,10 @@ beforeAll(async () => {
     headless: true,
     slowMo: 120,
     ignoreDefaultArgs: ['--no-sandbox'],
+    args: ['--start-maximized'],
   });
   page = await browser.newPage();
+  viewport = await page.setViewport(Viewport);
 });
 
 describe('Home Page', () => {
