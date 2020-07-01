@@ -5,7 +5,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import { i18n, Router, withTranslation } from '../../i18n';
 import { TFunction } from 'next-i18next';
 import { Logout, Login } from '../../pages/auth/logic/login_actions';
-import { getIDUSERThunkAction } from 'pages/auth/logic/login_reducer';
+import { GetUserDataThunkAction, getRolesThunkAction } from 'pages/auth/logic/login_reducer';
+
 interface DataType {
   t: TFunction;
 }
@@ -42,7 +43,8 @@ const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
   }, []);
   async function logUserIn(token: string) {
     await Promise.all([
-      dispatch(getIDUSERThunkAction(token)),
+      dispatch(getRolesThunkAction(token)),
+      dispatch(GetUserDataThunkAction(token)),
       dispatch(Login(token)),
     ]);
   }
@@ -60,20 +62,23 @@ const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
     const tokenAuth = typeof localStorage !== 'undefined' && localStorage.getItem('access_token');
     if (tokenAuth) {
       return (
-        <React.Fragment>
-          <Button className='logout__btn' variant='contained' onClick={logUserOut}>
-            {t('auth:logout')}
-          </Button>
-        </React.Fragment>
+        <Button variant='contained' className='logout__btn' color='primary' onClick={logUserOut}>
+          {t('auth:logout')}
+        </Button>
+      );
+    }
+    if (!tokenAuth) {
+      return (
+        <Button variant='contained' className='logout__btn' color='primary' onClick={logUserOut}>
+          {t('auth:logout')}
+        </Button>
       );
     }
 
     return (
-      <React.Fragment>
-        <Button className='logout__btn' variant='contained' onClick={() => Router.push('/auth/login')}>
-          {t('auth:login')}
-        </Button>
-      </React.Fragment>
+      <Button variant='contained' className='logout__btn' color='primary' onClick={() => Router.push('/auth/login')}>
+         {t('auth:login')}
+      </Button>
     );
   };
 

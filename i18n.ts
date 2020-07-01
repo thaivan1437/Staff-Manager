@@ -56,7 +56,18 @@ nextI18nextInstance.i18n.languages = ['vi', 'en'];
 export const nextI18next = nextI18nextInstance;
 
 export const includeDefaultNamespaces = (namespaces: string[]) =>
-  ['common', 'home', 'footer', 'auth'].concat(namespaces);
+  [
+    'common',
+    'footer',
+    'auth',
+    'home',
+    'address',
+    'companies',
+    'departments',
+    'fields',
+    'invitation',
+    'profile',
+  ].concat(namespaces);
 
 export const appWithTranslation = nextI18next.appWithTranslation;
 export const Trans = nextI18next.Trans;

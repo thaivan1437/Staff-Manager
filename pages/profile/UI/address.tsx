@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {} from 'react';
 import { Grid, Button } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateProfile, loading } from '../logic/profile_actions';
+import { updateProfile } from '../logic/profile_actions';
 import { putProfile } from '../logic/profile_reducer';
 import TextFieldForm from '@components/input/text_field';
 import { TFunction } from 'i18next';
@@ -17,19 +17,10 @@ const Address: React.FunctionComponent = () => {
     { attribute: 'address', rows: 3, name: 'Address', type: 'text' , multiline: true },
     { attribute: 'descriptions', rows: 3, name: 'Descriptions' , type: 'text', multiline: true },
   ];
-  const [status, setStatus] = useState(0);
-
   const handleAddress = async () => {
-    await dispatch(loading(true));
-    const result = await dispatch(putProfile('ADDRESS'));
-    if (!result){
-      return setStatus(1);
-    }
-    await dispatch(loading(false));
-    setStatus(result.status);
+    await dispatch(putProfile('ADDRESS'));
   };
-  let nameLoading: string = '';
-  nameLoading = (profileList.loading === true) ? 'Saving' : 'Save';
+  const nameLoading: string = (profileList.loading['loading'] === true) ? 'Saving' : 'Save';
 
   return(
     <div className='profile__body'>
@@ -57,10 +48,10 @@ const Address: React.FunctionComponent = () => {
       </Grid>
       <div className='profile__body--button'>
         <div className='floatleft' >
-          {(status === 200) &&
+          {(profileList.loading['result'] === 200) &&
             <div className='success'>{t('profile:SaveSuccess')}</div>
           }
-          {(status !== 200 && status !== 0) &&
+          {(profileList.loading['result'] === 1) &&
             <div className='success'>{t('profile:SaveNotSuccess')}</div>
           }
         </div>

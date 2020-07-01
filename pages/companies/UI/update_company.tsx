@@ -3,22 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FormControl, Grid, Button, InputAdornment, InputLabel, Input } from '@material-ui/core';
 import { TFunction } from 'next-i18next';
 import { useTranslation } from 'i18n';
-import { updateCompany  } from '../logic/companies_action';
 import { updateCompanyAction, getCompanyAction } from '../logic/companies_reducer';
 import { Icons } from '../../../components/icon/icon';
 import { NameFields } from '../../../constants/companies';
-import { Field } from '../../fields/UI/body';
+import  BodyFields from '../../fields/UI/body_fields';
 import SaveIcon from '@material-ui/icons/Save';
+import { addDataCompany } from '../logic/companies_actions';
 
 interface DataType {
   t: TFunction;
 }
 
-const BodyCompany: React.FunctionComponent = () => {
+const UpdateCompany: React.FunctionComponent = () => {
   const { t }: DataType = useTranslation();
-  const companies = useSelector((state) => state.companiesReducer);
   const authData = useSelector((state) => state.auth);
-  const status = companies.loading ? 'updating' :  'update';
+  const companies = useSelector((state) => state.companies);
+  const status = companies.loading['loading'] ? 'updating' :  'update';
   const dispatch = useDispatch();
   const handleSubmit = async () => {
     await dispatch(updateCompanyAction());
@@ -31,12 +31,11 @@ const BodyCompany: React.FunctionComponent = () => {
     }
 
     return (
-      dispatch(updateCompany({
+      dispatch(addDataCompany({
         [e.target.name]: TypeValue,
       }))
     );
   };
-
   useEffect(() => {
     if (!companies) {
       return;
@@ -95,19 +94,17 @@ const BodyCompany: React.FunctionComponent = () => {
                   }
                   </Grid>
                 </div>
-                {(companies.result !== 200 && companies.result !== 0) &&
+                {(companies.loading['result'] === 1) &&
                   <div className='companies__fail'>{t('companies:updateFail')}</div>
                 }
-                {(companies.result === 200) &&
+                {(companies.loading['result'] === 200) &&
                   <div className='companies__success'>{t('companies:updateSuccess')}</div>
                 }
               </div>
             </div>
           </Grid>
           <Grid item xs={5}>
-            <div className='field'>
-              <Field />
-            </div>
+            <BodyFields />
           </Grid>
         </Grid>
       </div>
@@ -115,4 +112,4 @@ const BodyCompany: React.FunctionComponent = () => {
   );
 };
 
-export default(BodyCompany);
+export default(UpdateCompany);

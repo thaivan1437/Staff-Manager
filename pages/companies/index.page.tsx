@@ -1,7 +1,7 @@
 import React, { } from 'react';
 import Sidebar from '@components/sidebar/sidebar';
 import Header from '../../components/topbar/header';
-import BodyCompany from './UI/body';
+import BodyCompanies from './UI/create_companies';
 import { withTranslation } from 'i18n';
 
 const Companies = () => {
@@ -14,7 +14,7 @@ const Companies = () => {
         </div>
         <div className='w__full'>
           <Header />
-          <BodyCompany />
+          <BodyCompanies />
         </div>
       </div>
     </React.Fragment>
@@ -23,8 +23,8 @@ const Companies = () => {
 
 Companies.getInitialProps = async () => {
   return {
-    namespacesRequired: ['companies'],
+    namespacesRequired: ['invitation'],
   };
 };
 
-export default withTranslation(['companies'])(Companies);
+export default withTranslation(['invitation'])(Companies);

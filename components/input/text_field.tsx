@@ -8,6 +8,7 @@ interface InitialProps {
   label?: string;
   rows?: number;
   multiline?: boolean;
+  className?: string;
 }
 const TextFieldForm: FunctionComponent<InitialProps> =
 ({
@@ -18,9 +19,10 @@ const TextFieldForm: FunctionComponent<InitialProps> =
   label= '',
   rows= 1,
   multiline= false,
+  className= '',
 }) => {
   return(
-  <FormControl key={id} fullWidth className='profile__body--input'>
+  <FormControl key={id} fullWidth className={className}>
     <TextField
       id={id}
       multiline={multiline}

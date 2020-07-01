@@ -36,6 +36,7 @@
 - Jest api: https://jestjs.io/docs/en/api
 - Jest-image-snapshot doc: https://github.com/americanexpress/jest-image-snapshot
 - Example: https://blog.logrocket.com/end-to-end-testing-react-apps-with-puppeteer-and-jest-ce2f414b4fd7/
+- Tool Create actions test : https://chrome.google.com/webstore/detail/puppeteer-recorder/djeegiggegleadkkbgopoonhjimgehda?hl=en-US
 
 ## Document for storybook:
 - Chạy storybook: npm run storybook

@@ -22,7 +22,7 @@ beforeAll(async () => {
 
 describe('Companies page', () => {
   test('Update company success', async () => {
-    await page.goto(`${routes.private.companies}?token=${token}`);
+    await page.goto(`${routes.private.update_company}?token=${token}`);
     await page.waitForSelector('.companies__title');
     await page.tap('.name');
     await page.type('.name', 'Name');
@@ -45,7 +45,7 @@ describe('Companies page', () => {
   });
 });
 test('Update company fail', async () => {
-  await page.goto(`${routes.private.companies}?token=${token}error`);
+  await page.goto(`${routes.private.update_company}?token=${token}error`);
   await page.waitForSelector('.companies__title');
   await page.tap('.companies__btn--success');
   await page.waitForSelector('.companies__fail');

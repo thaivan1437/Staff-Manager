@@ -1,7 +1,11 @@
-import { getProfile } from './profile_actions';
+import { getProfile, loading } from './profile_actions';
 import axios from 'axios';
 import { config } from '../../../helpers/get_config';
 
+interface ComponentLoading{
+  loading: boolean;
+  result: string;
+}
 interface ProfileList {
   firstName: string;
   lastName: string;
@@ -13,7 +17,7 @@ interface ProfileList {
   paidAmount: number;
   gender: boolean;
   address: string;
-  loading: boolean;
+  loading: ComponentLoading[];
 
 }
 const initialSate : ProfileList = {
@@ -27,7 +31,7 @@ const initialSate : ProfileList = {
   paidAmount: 0,
   gender: false,
   address: '',
-  loading: false,
+  loading: [],
 };
 
 export const profileReducer = (state = initialSate , action) => {
@@ -36,6 +40,7 @@ export const profileReducer = (state = initialSate , action) => {
       return {
         ...state,
         ...action.payload,
+        loading: { result: 0 },
       };
     case 'FETCH':
       return {
@@ -67,18 +72,18 @@ export const getDataThunkAction = () => async (dispatch, getState) => {
         Authorization: token,
       },
     });
-
-    dispatch(getProfile('FETCH', res.data));
+    await dispatch(getProfile('FETCH', res.data));
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.log(error);
   }
 };
 
-export const putProfile = (nameTab) =>  async (_, getState) => {
+export const putProfile = (nameTab) =>  async (dispatch, getState) => {
   try {
     const state = getState();
     let dataUpload = {};
+    await dispatch(loading({ loading: true }));
 
     if (nameTab === 'ABOUT'){
       dataUpload = {
@@ -103,22 +108,19 @@ export const putProfile = (nameTab) =>  async (_, getState) => {
     if (!state.auth || !state.auth.value || !state.auth.userID){
       return;
     }
+
     const token = `Bearer ${state.auth.value}`;
-
     const userID = state.auth.userID;
-
     const res = await axios.put(`${config.API_HOST}/s1/users/${userID}/profiles`, dataUpload, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token,
       },
     });
-
-    return res;
+    await dispatch(loading({ loading: false, result: res.status }));
 
   } catch (error) {
-    const res = error;
-
-    return res;
+    await dispatch(loading({ loading: false, result: 1 }));
   }
+
 };
