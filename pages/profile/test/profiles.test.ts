@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 beforeAll(async () => {
   browser = await puppeteer.launch({
     headless: true,
-    slowMo: 120,
+    slowMo: 250,
     ignoreDefaultArgs: ['--no-sandbox'],
     args: ['--start-maximized'],
   });
@@ -43,11 +43,15 @@ describe('Profiles Page', () => {
   });
   test('Test tab about no success', async () => {
 
-    await page.goto(`${routes.private.profile}?token=${token}error`);
+    await page.goto(`${routes.private.profile}?token=${token}`);
     await page.waitForSelector('.profile__header--title');
-
-    await page.tap('.firstName');
-    await page.type('.firstName', 'test');
+    await page.waitForSelector('.firstName');
+    await page.click('.firstName');
+    await page.waitFor(1000);
+    await page.mouse.click(880, 555, { clickCount: 3, delay: 200 });
+    await page.waitFor(1000);
+    await page.keyboard.press('Backspace');
+    await page.waitFor(1000);
     await page.tap('.lastName');
     await page.type('.lastName', 'test');
     await page.tap('.btn__save');

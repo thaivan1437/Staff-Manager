@@ -1,10 +1,10 @@
 import React, { } from 'react';
 import Sidebar from '@components/sidebar/sidebar';
 import Header from '../../components/topbar/header';
-import { Field } from './UI/body';
+import  Field  from './UI/body_fields';
 import { withTranslation } from 'i18n';
 
-const Companies = () => {
+const Fields = () => {
 
   return (
     <React.Fragment>
@@ -21,10 +21,10 @@ const Companies = () => {
   );
 };
 
-Companies.getInitialProps = async () => {
+Fields.getInitialProps = async () => {
   return {
     namespacesRequired: ['fields'],
   };
 };
 
-export default withTranslation(['fields'])(Companies);
+export default withTranslation(['fields'])(Fields);

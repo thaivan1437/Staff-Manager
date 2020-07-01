@@ -22,18 +22,20 @@ export const listCard: ListCard [] = [
         name: 'Dashboards',
         tab: 'dashboards',
         objectChild: [
-          { name: 'Dashboards', router: '/' },
-          { name: 'Page', router: '/' },
           { name: 'Element', router: '/' },
           { name: 'React', router: '/' },
           { name: 'Redux', router: '/' },
         ],
         router: '/',
       },
-      { name: 'Page', tab: 'Page', objectChild: [], router: '/' },
-      { name: 'Element', tab: 'element', objectChild: [], router: '/' },
-      { name: 'React', tab: 'react', objectChild: [], router: '/' },
+      { name: 'Fields', tab: 'fields', objectChild: [], router: '/fields' },
+      { name: 'Invitation', tab: 'react', objectChild: [
+        { name: 'Supper Admin', router: '/invitation/admins' },
+      ], router: '/invitation' },
       { name: 'Profile', tab: 'profile', objectChild: [], router: '/profile' },
+      { name: 'Company', tab: 'company', objectChild: [
+        { name: 'Update', router: '/companies/update' },
+      ], router: '/companies' },
     ],
   },
   {

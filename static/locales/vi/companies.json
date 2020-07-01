@@ -12,5 +12,22 @@
   "update": "Cập nhật",
   "updating": "Đang cập nhật",
   "updateSuccess": "Cập nhật thành công",
-  "updateFail": "Cập nhật thất bại"
+  "updateFail": "Cập nhật thất bại",
+  "Send": "Mời",
+  "Sending": "Đang gửi",
+  "SendSuccess": "Mời thành công",
+  "SendNotSuccess": "Mời thất bại, kiểm tra lại !",
+  "IsAdmin": "Phải là Admin mới có quyền truy cập trang này !.",
+  "Invitation": "Mời",
+  "InvitationAdmin": "Mời công ty",
+  "Continue": "Tiếp tục",
+  "phones": "Điện thoại",
+  "add": "Thêm trường",
+  "selectField": "Chọn trường",
+  "CreateSuccess": "Thêm mới thành công.",
+  "CreateNotSuccess": "Thêm mới thất bại.",
+  "addCompany": "Thêm công ty",
+  "department": "Bộ phận",
+  "Create": "Thêm mới",
+  "CreateCompany": "Thêm công ty"
 }

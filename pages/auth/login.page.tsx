@@ -6,7 +6,7 @@ import LeftSidebar from './UI/left_sidebar/left_sidebar';
 import { useDispatch } from 'react-redux';
 import { Login } from './logic/login_actions';
 import { config } from '../../helpers/get_config';
-import { getIDUSERThunkAction } from './logic/login_reducer';
+import { GetUserDataThunkAction, getRolesThunkAction } from './logic/login_reducer';
 
 interface DataType {
   t: TFunction;
@@ -31,7 +31,8 @@ const LoginPage = () => {
 
   async function logUserIn(token: string) {
     await Promise.all([
-      dispatch(getIDUSERThunkAction(token)),
+      dispatch(getRolesThunkAction(token)),
+      dispatch(GetUserDataThunkAction(token)),
       dispatch(Login(token)),
     ]);
     void Router.push('/');

@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { FormControl, InputLabel, Input, InputAdornment } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
 interface InitialProps {
   id: string;
   name: string;
@@ -8,6 +7,8 @@ interface InitialProps {
   value?: string;
   readOnly?: boolean;
   type?: string;
+  className?: string;
+  icon?: React.ReactNode;
 }
 const InputForm: FunctionComponent<InitialProps> =
 ({
@@ -17,10 +18,12 @@ const InputForm: FunctionComponent<InitialProps> =
   value= '',
   type= '',
   readOnly= false,
+  className= '',
+  icon,
 }) => {
   return(
-    <FormControl key={id} fullWidth className='profile__body--input'>
-      <InputLabel className='profile__body--label' htmlFor={id}>
+    <FormControl key={id} fullWidth className={className}>
+      <InputLabel htmlFor={id}>
         {name}
       </InputLabel>
       <Input
@@ -31,9 +34,9 @@ const InputForm: FunctionComponent<InitialProps> =
         type={type}
         name={id}
         className={id}
-        endAdornment={
+        endAdornment={icon &&
           <InputAdornment position='end'>
-            <AccountCircle />
+            {icon}
           </InputAdornment>
         }
       />

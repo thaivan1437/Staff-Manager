@@ -1,25 +1,39 @@
 import axios from 'axios';
 import { config } from '../../../helpers/get_config';
-import { getField, createField, statusCreateField } from './fields_action';
+import { loading, getFields, createField } from './fields_actions';
 
-interface Ob {
-  fieldID: string;
+interface ListFields{
   name: string;
+  fieldID: string;
 }
-interface FieldsValue {
-  list: Ob[];
-  newValueFields: string;
+interface ComponentLoading{
+  loading: boolean;
+  result: string;
+}
+interface FieldsInvitation {
+  loading: ComponentLoading[];
   result: number;
-}
-const initialSate : FieldsValue = {
-  list: [],
-  newValueFields: '',
-  result: 0,
-};
+  fieldID: ListFields[];
+  name: string;
+  list: ListFields[];
 
-export const fieldsReducer = (state = initialSate , action) => {
+}
+const initialSate : FieldsInvitation = {
+  loading: [],
+  result: 0,
+  fieldID: [],
+  name: '',
+  list: [],
+};
+export const fields = (state = initialSate , action) => {
   switch (action.type){
-    case 'GET_FIELD':
+    case 'ADD':
+      return {
+        ...state,
+        ...action.payload,
+        loading: { result: 0 },
+      };
+    case 'GET_FIELDS':
       return {
         ...state,
         ...action.payload,
@@ -32,24 +46,23 @@ export const fieldsReducer = (state = initialSate , action) => {
         ...state,
         list: listField,
       };
-    case 'VALUE_FIELD_CHANGE':
+    case 'LOADING':
       return {
         ...state,
-        newValueFields: action.payload,
-      };
-    case 'STATUS_CREATE_FIELD':
-      return {
-        ...state,
-        result: action.payload,
+        loading: action.payload,
       };
     default:
       return state;
   }
 };
-export const getFieldAction = () => async (dispatch, getState) => {
+
+export const getFieldsThunkAction = () => async (dispatch, getState) => {
   try {
     const state = getState();
-    if (!state.auth || !state.auth.value) {
+    if (!state.auth || !state.auth.value){
+      // tslint:disable-next-line:no-console
+      console.log('Token không tồn tại');
+
       return;
     }
     const token = state.auth.value;
@@ -59,35 +72,41 @@ export const getFieldAction = () => async (dispatch, getState) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    await dispatch(getField(res.data));
+    await dispatch(getFields(res.data));
+
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.log(error);
   }
 };
 
-export const createFieldAction = () => async (dispatch, getState) => {
-  const state = getState();
-  const payload = { name: state.fieldsReducer.newValueFields };
-  if (!state.auth || !state.auth.value){
-    return;
-  }
-  const token  = state.auth.value;
-
+export const createFieldAction = () =>  async (dispatch, getState) => {
   try {
-    const res = await axios.post(`${config.API_HOST}/s2/fields`,
-      payload, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      });
+    const state = getState();
+    await dispatch(loading({ loading: true }));
+    const  dataUpload = { name: state.fields.name };
+
+    if (!state.auth || !state.auth.value){
+      // tslint:disable-next-line:no-console
+      console.log('Token không tồn tại');
+
+      return;
+    }
+    if (!dataUpload){
+      return;
+    }
+    const token = `Bearer ${state.auth.value}`;
+
+    const res = await axios.post(`${config.API_HOST}/s2/fields`, dataUpload, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+    });
     await dispatch(createField(res.data));
-    await dispatch(statusCreateField(res.status));
+    await dispatch(loading({ loading: false, result: res.status }));
+
   } catch (error) {
-    dispatch(statusCreateField(1));
-    // tslint:disable-next-line:no-console
-    console.log(error);
+    await dispatch(loading({ loading: false, result: 1 }));
   }
 };

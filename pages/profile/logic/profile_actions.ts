@@ -13,7 +13,7 @@ export const getProfile = (action: string, res: object) => {
   };
 };
 
-export const loading = (res: boolean) => {
+export const loading = (res: object) => {
   return{
     type: 'LOADING',
     payload: res,

@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 beforeAll(async () => {
   browser = await puppeteer.launch({
     headless: true,
-    slowMo: 120,
+    slowMo: 150,
     ignoreDefaultArgs: ['--no-sandbox'],
     args: ['--start-maximized'],
   });
@@ -43,13 +43,19 @@ describe('Profiles Page', () => {
   });
   test('Test tab address không thành công', async () => {
 
-    await page.goto(`${routes.private.address}?token=${token}error`);
+    await page.goto(`${routes.private.address}?token=${token}`);
     await page.waitForSelector('.profile__header--title');
-
+    await page.waitForSelector('#address');
     await page.click('#address');
     await page.type('#address', 'address test');
+
+    await page.waitForSelector('#descriptions');
     await page.click('#descriptions');
-    await page.type('#descriptions', 'descriptions test');
+    await page.keyboard.press('Backspace');
+    await page.waitFor(1000);
+    await page.mouse.click(650, 615, { clickCount: 3, delay: 200 });
+    await page.waitFor(1000);
+    await page.keyboard.press('Backspace');
 
     await page.tap('.btn__save');
     await page.waitForSelector('.success');
@@ -57,10 +63,9 @@ describe('Profiles Page', () => {
     expect(html).toBe('Lưu không thành công');
 
     const image = await page.screenshot();
-
     expect(image).toMatchImageSnapshot();
-
   });
+
 });
 
 afterAll(() => {

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {} from 'react';
 import { Grid, FormControl, InputLabel, Input, InputAdornment, Button } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import FaceIcon from '@material-ui/icons/Face';
 import MailIcon from '@material-ui/icons/Mail';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateProfile, loading } from '../logic/profile_actions';
+import { updateProfile } from '../logic/profile_actions';
 import { putProfile } from '../logic/profile_reducer';
 import { TFunction } from 'i18next';
 import { useTranslation } from 'i18n';
@@ -16,19 +16,11 @@ const About: React.FunctionComponent = () => {
   const { t }: DataType = useTranslation();
   const profileList = useSelector((state) => state.profile);
   const dispatch = useDispatch();
-  const [status, setStatus] = useState(0);
 
   const handleAddProfile = async () => {
-    await dispatch(loading(true));
-    const result = await dispatch(putProfile('ABOUT'));
-    await dispatch(loading(false));
-    if (!result){
-      return setStatus(1);
-    }
-    setStatus(result.status);
+    await dispatch(putProfile('ABOUT'));
   };
-  let nameLoading: string = '';
-  nameLoading = (profileList.loading === true) ? 'Saving' : 'Save';
+  const nameLoading: string = (profileList.loading['loading'] === true) ? 'Saving' : 'Save';
 
   return(
     <div className='profile__body'>
@@ -104,10 +96,10 @@ const About: React.FunctionComponent = () => {
       </Grid>
       <div className='profile__body--button'>
         <div className='floatleft' >
-          {(status === 200) &&
+          {(profileList.loading['result'] === 200) &&
             <div className='success'>{t('profile:SaveSuccess')}</div>
           }
-          {(status !== 200 && status !== 0) &&
+          {(profileList.loading['result'] === 1) &&
             <div className='success'>{t('profile:SaveNotSuccess')}</div>
           }
         </div>

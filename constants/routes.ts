@@ -8,7 +8,10 @@ export const routes = {
     profile: `${appUrlBase}/profile`,
     account: `${appUrlBase}/profile/account`,
     address: `${appUrlBase}/profile/address`,
-    companies: `${appUrlBase}/companies`,
+    invitation: `${appUrlBase}/invitation`,
+    adminInvitation: `${appUrlBase}/invitation/admins`,
     fields: `${appUrlBase}/fields`,
+    company: `${appUrlBase}/companies`,
+    update_company: `${appUrlBase}/companies/update`,
   },
 };

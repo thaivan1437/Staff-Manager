@@ -1,7 +1,7 @@
-import React, { useState  } from 'react';
+import React, {} from 'react';
 import { Grid, Button } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateProfile, loading } from '../logic/profile_actions';
+import { updateProfile } from '../logic/profile_actions';
 import { putProfile } from '../logic/profile_reducer';
 import { initialProfiles } from '../../../constants/profiles_tab';
 import { convertDateFormat } from '../../../helpers/date';
@@ -19,21 +19,14 @@ const Account: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const { t }: DataType = useTranslation();
 
-  const [status, setStatus] = useState(0);
-
   const handleAccount = async () => {
-    await dispatch(loading(true));
-    const result = await dispatch(putProfile('ACCOUNT'));
-    if (!result){
-      return setStatus(1);
-    }
-    await dispatch(loading(false));
-    setStatus(result.status);
+    await dispatch(putProfile('ACCOUNT'));
   };
 
   const handleSelect = (e: React.ChangeEvent<{ value: unknown }>) => {
     dispatch(updateProfile({ gender : e.target.value }));
   };
+
   const pareNumber = (type, e) => {
     let  convert  = e.target.value;
 
@@ -58,8 +51,7 @@ const Account: React.FunctionComponent = () => {
     { name: 'ORTHER' },
   ];
 
-  let nameLoading: string = '';
-  nameLoading = (profileList.loading === true) ? 'Saving' : 'Save';
+  const nameLoading: string = (profileList.loading['loading'] === true) ? 'Saving' : 'Save';
 
   return (
     <div className='profile__body'>
@@ -84,6 +76,7 @@ const Account: React.FunctionComponent = () => {
                           readOnly={obitem.readonly}
                           name={t(`profile:${obitem.attribute}`)}
                           id={obitem.attribute}
+                          className='profile__body--input'
                         />
                       );
                     case 'date':
@@ -93,6 +86,7 @@ const Account: React.FunctionComponent = () => {
                           id={obitem.attribute}
                           label={t(`profile:${obitem.attribute}`)}
                           type={obitem.type}
+                          className='profile__body--input'
                           onChange={(e) => dayconvert(e)}
                           defaultValue={convertDateFormat(new Date(profileList[obitem.attribute]))}
                         />
@@ -104,6 +98,7 @@ const Account: React.FunctionComponent = () => {
                           attribute={obitem.attribute}
                           name={t(`profile:${obitem.attribute}`)}
                           options={options}
+                          className='profile__body--input'
                           onChange={handleSelect}
                           value={profileList[obitem.attribute]}
                         />
@@ -117,10 +112,10 @@ const Account: React.FunctionComponent = () => {
       </Grid>
       <div className='profile__body--button'>
         <div className='floatleft' >
-          {(status === 200) &&
+          {(profileList.loading['result'] === 200) &&
             <div className='success'>{t('profile:SaveSuccess')}</div>
           }
-          {(status !== 200 && status !== 0) &&
+          {(profileList.loading['result'] === 1) &&
             <div className='success'>{t('profile:SaveNotSuccess')}</div>
           }
         </div>
