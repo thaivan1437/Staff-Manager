@@ -1,5 +1,6 @@
 import { routes } from '../../../constants/routes';
 import { getTokenAdmin } from '../../../helpers/get_token';
+import { scrollTest } from '../../../helpers/scroll';
 import { v4 as uuid } from 'uuid';
 import { Viewport } from '../../../constants/view_port';
 
@@ -32,6 +33,8 @@ describe('Invite Page', () => {
     await page.waitForSelector('.expand__company');
     await page.click('.expand__company');
 
+    await page.mouse.click(1358, 848, { clickCount: 1, delay: 200 });
+
     await page.waitForSelector('.MuiAutocomplete-root > .MuiFormControl-root > .MuiInputBase-root > .MuiChip-root > .MuiSvgIcon-root');
     await page.click('.MuiAutocomplete-root > .MuiFormControl-root > .MuiInputBase-root > .MuiChip-root > .MuiSvgIcon-root');
 
@@ -52,6 +55,21 @@ describe('Invite Page', () => {
     await page.waitForSelector('.success');
     const html = await page.$eval('.success', (e) => e.innerHTML);
     expect(html).toBe('Mời thành công');
+
+    const image = await page.screenshot();
+
+    expect(image).toMatchImageSnapshot();
+
+  });
+
+  test('Test scroll', async () => {
+    // đang test scroll
+    await page.goto(`${routes.private.invitation}?token=${token}`);
+    await page.waitForSelector('.invite--title');
+
+    await page.waitForSelector('.invite--company');
+    await page.waitFor(3000);
+    await scrollTest(page);
 
     const image = await page.screenshot();
 

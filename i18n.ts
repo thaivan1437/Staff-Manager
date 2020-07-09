@@ -67,6 +67,7 @@ export const includeDefaultNamespaces = (namespaces: string[]) =>
     'fields',
     'invitation',
     'profile',
+    'converSations',
   ].concat(namespaces);
 
 export const appWithTranslation = nextI18next.appWithTranslation;
