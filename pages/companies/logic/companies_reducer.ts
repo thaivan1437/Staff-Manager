@@ -213,7 +213,7 @@ export const getCompaniesThunkAction = () => async (dispatch, getState) => {
       return;
     }
     const token = state.auth.value;
-    const res = await axios.get(`${config.API_HOST}/s2/companies?sortDirection=ASC`,  {
+    const res = await axios.get(`${config.API_HOST}/s2/companies?sortDirection=ASC&limit=10`,  {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -241,7 +241,7 @@ export const getCompaniesPaginationThunkAction = () => async (dispatch, getState
 
     const cursor = state.companies.cursor;
     const token = state.auth.value;
-    const res = await axios.get(`${config.API_HOST}/s2/companies?sortDirection=ASC&cursor=${cursor}`,  {
+    const res = await axios.get(`${config.API_HOST}/s2/companies?sortDirection=ASC&cursor=${cursor}&limit=10`,  {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,

@@ -105,6 +105,7 @@ const InviteList = () => {
                         item.departmentIDs[0].departmentID,
                         )}
                         className='expand__company'
+                        id={`panel${index + 1}`}
                       >
                         <ExpansionPanelSummary
                           expandIcon={<ExpandMoreIcon />}

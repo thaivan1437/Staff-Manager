@@ -13,5 +13,6 @@ export const routes = {
     fields: `${appUrlBase}/fields`,
     company: `${appUrlBase}/companies`,
     update_company: `${appUrlBase}/companies/update`,
+    get_conversations: `${appUrlBase}/conversations`,
   },
 };
