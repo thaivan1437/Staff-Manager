@@ -1,3 +1,16 @@
 {
-    "departments": "Phân ban"
+    "departments": "Phòng ban",
+    "monthLimit": "Month Limit",
+    "callLimit": "Giới hạn cuộc gọi",
+    "companyName": "Tên công ty",
+    "fieldName": "Tên lĩnh vực",
+    "name": "Tên",
+    "member": "Thành viên",
+    "point": "Điểm ",
+    "createdAt": "Ngày tạo",
+    "status": "Trạng thái",
+    "description": "Mô tả",
+    "address": "Địa chỉ",
+    "inactive": "Không hoạt động",
+    "view": "Xem"
 }

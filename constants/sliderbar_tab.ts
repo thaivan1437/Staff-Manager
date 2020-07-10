@@ -43,6 +43,8 @@ export const listCard: ListCard [] = [
     object: [
       { name: 'Companies', tab: 'dashboards', objectChild: [], router: '/companies' },
       { name: 'Fields', tab: 'page', objectChild: [], router: '/fields' },
+      { name: 'Departments', tab: 'element', objectChild: [], router: '/departments_member' },
+      { name: 'React', tab: 'react', objectChild: [], router: '/' },
       { name: 'React', tab: 'element', objectChild: [], router: '/' },
       { name: 'ConverSations', tab: 'conversations', objectChild: [], router: '/conversations' },
 

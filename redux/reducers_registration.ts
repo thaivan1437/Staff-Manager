@@ -8,6 +8,7 @@ import { fields } from '../pages/fields/logic/fields_reducer';
 import { conversations } from '../pages/conversations/logic/conversations_reducer';
 import { companies } from '../pages/companies/logic/companies_reducer';
 import { combineReducers } from 'redux';
+import { departmentsReducer } from 'pages/departments_member/logic/departments_reducer';
 
 const rootReducer = combineReducers({
   reducerVehicle,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   conversations,
   fields,
   profile: profileReducer,
+  departments: departmentsReducer,
 });
 
 export default rootReducer;
