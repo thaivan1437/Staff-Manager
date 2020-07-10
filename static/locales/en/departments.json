@@ -1,3 +1,17 @@
 {
-    "departments": "Departments"
+    "departments": "Departments",
+    "monthLimit": "Month Limit",
+    "callLimit": "Call limit",
+    "companyName": "Company name",
+    "fieldName": "Field Name",
+    "name": "Name",
+    "member": "Member",
+    "point": "Point",
+    "createdAt": "Created",
+    "status": "Status",
+    "description": "Description",
+    "address": "Address",
+    "inactive": "Inactive",
+    "view": "View"
+
 }

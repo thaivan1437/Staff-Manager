@@ -1,0 +1,143 @@
+$color-1: rgb(59, 62, 102)
+$color-2: rgb(244, 245, 253)
+$color-3: rgb(255, 251, 242)
+$color-4: rgb(83, 131, 255)
+$color-5: rgb(245, 245, 247)
+
+.departments
+  margin: 40px 30px 
+
+  p
+    margin: 0 0 10px
+
+  .departments__left
+    background: $color-white
+    padding: 15px 25px
+    box-shadow: 0 0 15px $boxshadow
+    position: relative
+
+    .departments__top
+      display: flex
+      align-items: center
+      justify-content: space-between
+      margin-bottom: 20px
+
+      .departments__title
+        font-size: 24px
+        color: $color-1
+
+      .departments__select
+        .MuiNativeSelect-select
+          padding: 10px 15px
+
+      .MuiInputBase-input
+        border-radius: 5px
+        border: 1px solid $color-grey-1
+
+      .MuiInput-underline
+        &::before
+          border-bottom: 0
+
+        &::hover
+          &:before
+            border: 1px solid $color-blue
+
+    .departments_table
+      .MuiTableHead-root
+        border-bottom: 0
+
+      .MuiTableCell-head
+        color: $color-1
+        font-size: 18px
+        font-weight: 600
+        background: $color-2
+        border-bottom: 0
+
+      .MuiTableCell-root
+        border-bottom: 0
+
+      .MuiTableRow-root
+        cursor: pointer
+        transition: all .3s ease-in-out
+
+        &:hover
+          color: $color-1
+          background-color: $color-3
+
+      .departments__item
+        display: flex
+        align-items: center
+
+
+
+
+  .departments__photo
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    margin-right: 20px
+
+  .departments__name
+    color: $color-1
+    text-decoration: none
+    background-color: transparent
+    font-weight: bold
+
+  .departments__desc
+    text-align: center
+    color: $color-grey
+
+  .departments__right
+    background: $color-white
+    box-shadow:  5px 10px 15px $boxshadow
+    padding: 25px 25px 30px
+    position: relative
+
+    .departments__card
+      display: flex
+
+      .MuiButton-containedPrimary
+        background: $color-4
+
+      .departments__nameCard
+        font-size: 20px
+        font-weight: bold
+        color: $color-blue-4
+        word-break: break-word
+
+      .departments__avatar
+        margin-right: 15px
+        width: 100px
+        height: 100px
+        border-radius: .65rem
+
+      .departments__view
+        margin-left: 15px
+
+  .departments__table-name
+    color: $color-1
+    font-weight: bold
+    background: $color-2
+
+  .departments__bd
+    border: 0
+
+
+
+.departments__rounded
+  background: color-5
+  border-radius: 4px
+  padding: 10px 15px
+  margin: 20px 0
+
+.departments__info
+  display: flex
+  justify-content: space-between
+
+.departments__notification
+  text-align: center
+  font-size: 18px
+
+.item__table
+  position: relative
+  padding: 15px 0
