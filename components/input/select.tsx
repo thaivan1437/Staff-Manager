@@ -6,6 +6,7 @@ interface DataType {
   t: TFunction;
 }
 interface Ob {
+  id?: number;
   name: string;
 }
 interface InitialProps {
@@ -46,7 +47,7 @@ const SelectForm: FunctionComponent<InitialProps> =
           attribute === 'gender' ?
             <MenuItem key={index} value={item.name}>{item.name}</MenuItem> :
             !ExcludeList.includes(item.name) &&
-              <MenuItem key={index} value={item[attribute]}>{t(`invitation:${item.name}`)}</MenuItem>
+              <MenuItem key={index} value={(item.id) ? item.id : item[attribute]}>{t(`invitation:${item.name}`)}</MenuItem>
         ))}
       </Select>
     </FormControl>

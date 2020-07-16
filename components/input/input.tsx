@@ -2,13 +2,14 @@ import React, { FunctionComponent } from 'react';
 import { FormControl, InputLabel, Input, InputAdornment } from '@material-ui/core';
 interface InitialProps {
   id: string;
-  name: string;
+  name?: string;
   onChange?: (e) => void;
   value?: string;
   readOnly?: boolean;
   type?: string;
   className?: string;
   icon?: React.ReactNode;
+  hidden?: boolean;
 }
 const InputForm: FunctionComponent<InitialProps> =
 ({
@@ -19,6 +20,7 @@ const InputForm: FunctionComponent<InitialProps> =
   type= '',
   readOnly= false,
   className= '',
+  hidden = false,
   icon,
 }) => {
   return(
@@ -30,6 +32,7 @@ const InputForm: FunctionComponent<InitialProps> =
         onChange={onChange}
         value={convertNumber(type, value)}
         id={id}
+        hidden={hidden}
         readOnly={readOnly}
         type={type}
         name={id}

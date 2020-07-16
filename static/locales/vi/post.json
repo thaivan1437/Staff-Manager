@@ -1,0 +1,23 @@
+{
+  "theImageUpload": "Hình ảnh được tải lên sẽ được hiển thị bên trong hộp bên dưới.",
+  "title": "Tiêu đề",
+  "createPost": "Tạo bài viết ",
+  "description": "Mô tả ngắn ",
+  "rate": "VND/Phút",
+  "region": "Khu vực - Tỉnh thành",
+  "chooseFile": "Chọn file",
+  "save": "Lưu",
+  "warning": "Cảnh báo",
+  "descWarning": "Bạn có muốn xóa bài này không ?",
+  "deleteSuccess": "Xóa thành công!",
+  "deleteNoSuccess": "Xóa không thành công !",
+  "createSuccess": "Thêm mới thành công!",
+  "createNotSuccess": "Thêm mới thất bại!",
+  "updateSuccess": "Chỉnh sửa thành công!",
+  "updateNotSuccess": "Chỉnh sửa thất bại!",
+  "Posts": "Bài viết",
+  "add": "Thêm mới",
+  "updatePost": "Chỉnh sửa bài viết",
+  "cancle": "Hủy",
+  "yes": "Đồng ý"
+}

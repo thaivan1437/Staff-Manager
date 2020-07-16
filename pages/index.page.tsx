@@ -4,7 +4,6 @@ import Header from '../components/header/header';
 import Sidebar from '../components/sidebar/sidebar';
 
 const Home = () => {
-
   return (
     <React.Fragment>
       <Header />

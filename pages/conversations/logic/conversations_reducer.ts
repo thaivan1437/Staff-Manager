@@ -75,7 +75,7 @@ export const getConversationsThunkAction = () => async (dispatch, getState) => {
     }
     const token = `Bearer ${state.auth.value}`;
 
-    const res = await axios.get(`${config.API_HOST}/s3/companies/${state.auth.companyID}/departments/${state.auth.departmentID}/conversations?limit=3`,  {
+    const res = await axios.get(`${config.API_HOST}/s3/companies/${state.auth.companyID}/departments/${state.auth.departmentID}/conversations?limit=1`,  {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `${token}`,
@@ -111,6 +111,7 @@ export const getConversationsThunkAction = () => async (dispatch, getState) => {
     console.log(error);
   }
 };
+
 export const getConversationsPaginationThunkAction = () => async (dispatch, getState) => {
   try {
     const state = getState();
@@ -129,7 +130,7 @@ export const getConversationsPaginationThunkAction = () => async (dispatch, getS
     }
     const cursor = state.conversations.cursor;
     const token = state.auth.value;
-    const res = await axios.get(`${config.API_HOST}/s3/companies/${state.auth.companyID}/departments/${state.auth.departmentID}/conversations?cursor=${cursor}&limit=3`,  {
+    const res = await axios.get(`${config.API_HOST}/s3/companies/${state.auth.companyID}/departments/${state.auth.departmentID}/conversations?cursor=${cursor}&limit=1`,  {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,

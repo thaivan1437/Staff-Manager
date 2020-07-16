@@ -15,5 +15,6 @@ export const routes = {
     update_company: `${appUrlBase}/companies/update`,
     department: `${appUrlBase}/departments_member`,
     get_conversations: `${appUrlBase}/conversations`,
+    posts: `${appUrlBase}/posts`,
   },
 };
