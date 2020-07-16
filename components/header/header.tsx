@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { AppBar, Toolbar, Switch, Grid, FormControlLabel, Input, InputAdornment, Typography, Button } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import { Button, FormControlLabel } from '@material-ui/core';
+import Switch from '@material-ui/core/Switch';
 import { i18n, Router, withTranslation } from '../../i18n';
 import { TFunction } from 'next-i18next';
 import { Logout, Login } from '../../pages/auth/logic/login_actions';
 import { GetUserDataThunkAction, getRolesThunkAction } from 'pages/auth/logic/login_reducer';
-
+import SearchIcon from '@material-ui/icons/Search';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 interface DataType {
   t: TFunction;
 }
@@ -62,14 +63,22 @@ const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
     const tokenAuth = typeof localStorage !== 'undefined' && localStorage.getItem('access_token');
     if (tokenAuth) {
       return (
-        <Button variant='contained' className='logout__btn' color='primary' onClick={logUserOut}>
+        <Button
+          variant='contained'
+          className='logout__btn MuiFormControlLabel-labelPlacementStart'
+          onClick={logUserOut}
+        >
           {t('auth:logout')}
         </Button>
       );
     }
     if (!tokenAuth) {
       return (
-        <Button variant='contained' className='logout__btn' color='primary' onClick={logUserOut}>
+        <Button
+          variant='contained'
+          className='logout__btn MuiFormControlLabel-labelPlacementStart'
+          onClick={logUserOut}
+        >
           {t('auth:logout')}
         </Button>
       );
@@ -83,42 +92,37 @@ const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
   };
 
   return (
-    <div className='topbar'>
-      <AppBar position='relative' className='topbar__bg'>
-        <Toolbar className='topbar__wrap'>
-          <Grid container alignItems='center'>
-            <Grid item md={6}>
-              <Typography variant='h6' className='topbar__wrap--title'>Dashboard</Typography>
-            </Grid>
-            <Grid container item md={6} alignContent='flex-end' justify='space-between'>
-                <Input
-                  className='topbar__search'
-                  placeholder='Search'
-                  disableUnderline={true}
-                  type='search'
-                  endAdornment={
-                    <InputAdornment position='end'>
-                      <SearchIcon />
-                    </InputAdornment>
-                  }
-                />
-                <FormControlLabel
-                  control={
-                    <Switch
-                      onChange={onSwitchLanguage}
-                      value='checked'
-                      color='default'
-                      checked={i18n.language ? !(i18n.language === 'vi') : false}
-                    />
-                  }
-                  labelPlacement='start'
-                  label={i18n.language ? i18n.language.toUpperCase() : 'VI'}
-                />
-                <ActionUser />
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+    <div className='header'>
+      <div className='header__logo'>
+        <Button className='MuiIconButton-root'>
+          <img src='../../static/images/logo.svg' alt='' />
+        </Button>
+        <p className='header__name'>Company</p>
+      </div>
+      <div className='header__toolbar'>
+        <div className='toolbar__search'>
+          <Button><SearchIcon className='search__icon'/></Button>
+          <p className='header__dash'>Dashboard</p>
+        </div>
+        <div className='toolbar__right'>
+          <Button>
+            <NotificationsActiveIcon className='header__notification'/>
+          </Button>
+          <FormControlLabel
+            control={
+              <Switch
+                onChange={onSwitchLanguage}
+                color='default'
+                checked={i18n.language ? !(i18n.language === 'vi') : false}
+                inputProps={{ 'aria-label': 'secondary checkbox' }}
+              />
+            }
+            labelPlacement='start'
+            label={i18n.language ? i18n.language.toUpperCase() : 'VI'}
+          />
+          <ActionUser />
+        </div>
+      </div>
     </div>
   );
 

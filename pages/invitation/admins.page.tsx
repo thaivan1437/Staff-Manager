@@ -1,20 +1,22 @@
 import React, {  } from 'react';
 import { withTranslation  } from '../../i18n';
 import Sidebar from '../../components/sidebar/sidebar';
-import Header from '../../components/topbar/header';
+import Header from '../../components/header/header';
 import BodySupperAdmin from './UI/supper_admin';
 
 const SupperAdmin = () => {
 
   return (
     <React.Fragment>
-      <div className='flex'>
-        <div className='slide__bar'>
-          <Sidebar />
-        </div>
-        <div className='w__full'>
-          <Header />
-          <BodySupperAdmin />
+      <Header />
+      <div className='app-main'>
+        <Sidebar />
+        <div className='app-content'>
+          <div className='app-content--inner'>
+            <div className='app-content--inner__wrapper'>
+              <BodySupperAdmin />
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>

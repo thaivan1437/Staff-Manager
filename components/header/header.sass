@@ -1,0 +1,67 @@
+$color: rgb(61, 73, 119)
+$color-1: rgba(0, 0, 0, .2)
+$color-2: rgba(0, 0, 0, .14)
+$color-3: rgba(0, 0, 0, .12)
+$color-4: rgba(255, 255, 255, .11)
+
+.header
+  background: $color
+  color: $color-white
+  height: 74px
+  box-shadow: 0 6px 7px -4px $color-1, 0 11px 15px 1px $color-2, 0 4px 20px 3px $color-3
+  display: flex
+  flex-direction: row
+  align-items: center
+  top: 0
+  left: auto
+  right: 0
+  position: fixed
+  width: 100%
+  z-index: 10002
+
+  .header__logo
+    display: flex
+    align-items: center
+    width: 300px
+    height: 74px
+    background: $color-4
+
+    img
+      width: 40px
+
+    .header__name
+      font-weight: bold
+      font-size: 18px
+
+  .header__toolbar 
+    flex: 1 1
+    display: flex
+    justify-content: space-between
+    padding: 0 30px
+
+    .toolbar__search
+      display: flex
+      align-items: center
+
+      .search__icon 
+        color: $color-white
+
+      .header__dash
+        font-size: 20px
+        margin: 0
+
+    .MuiSwitch-root
+      input
+        cursor: inherit
+        height: 100%
+        margin: 0
+        opacity: 0
+        padding: 0
+        z-index: 1
+        position: absolute
+
+    .header__search 
+      color: $color-white
+
+    .header__notification
+      color: $color-white

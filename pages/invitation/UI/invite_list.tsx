@@ -71,7 +71,6 @@ const InviteList = () => {
           <BodyCompanies/>
         </DialogContent>
       </Dialog>
-      <div className='root-page'>
         <Grid container justify='space-between' alignItems='center' className='invite'>
           <Grid item xs={12} sm={12}>
             <div className='root-pages'>
@@ -91,67 +90,66 @@ const InviteList = () => {
           </Grid>
           {auth.access &&
             auth.isAdmin === true ?
-            <Grid item xs={12} sm={12} className='invite--company'>
-              {companies.list &&
-                companies.list.map((item, index) => {
-                  return(
-                    <Grid key={index} item xs={12} sm={12} className='item--company'>
-                      <ExpansionPanel
-                        expanded={expanded.panel === `panel${index + 1}` ? expanded.isExpanded : false}
-                        square
-                        onChange={() => handleChangeStatusExpand(
-                        `panel${index + 1}`,
-                        item.companyID,
-                        item.departmentIDs[0].departmentID,
-                        )}
-                        className='expand__company'
-                        id={`panel${index + 1}`}
+          <Grid item xs={12} sm={12} className='invite--company'>
+            {companies.list &&
+              companies.list.map((item, index) => {
+                return(
+                  <Grid key={index} item xs={12} sm={12} className='item--company'>
+                    <ExpansionPanel
+                      expanded={expanded.panel === `panel${index + 1}` ? expanded.isExpanded : false}
+                      square
+                      onChange={() => handleChangeStatusExpand(
+                      `panel${index + 1}`,
+                      item.companyID,
+                      item.departmentIDs[0].departmentID,
+                      )}
+                      className='expand__company'
+                      id={`panel${index + 1}`}
+                    >
+                      <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls='panel1bh-content'
+                        id='panel1bh-header'
                       >
-                        <ExpansionPanelSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls='panel1bh-content'
-                          id='panel1bh-header'
-                        >
-                          <Typography className='expand--title'>{item.name}</Typography>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails className='exchild'>
-                          {expanded.panel === `panel${index + 1}` &&
-                            <FieldsListInvite
-                              idEmail={`emails${index + 1}`}
-                              optionsEmail={exEmail.map((option) => option.email)}
-                              defaultValueEmail={[exEmail[0].email]}
-                              onChangeEmail={(_, newInputValue) => {
-                                dispatch(addInviteData({ ['emails']: newInputValue }));
-                              }}
-                              handleSelectRole={handleSelectRole}
-                              optionsRoles={auth.roles}
-                              valueRoleID={invite.rolesID}
-                              optionsDepartment={companies.list[index].departmentIDs}
-                              handleSelectDepartment={(e) => handleSelectDepartment(e)}
-                              defaultValueDepartmentID={companies.list[0].departmentIDs[0].departmentID}
-                              valueDepartment={invite.departmentID}
-                              resultStatusInvite={invite.loading['result']}
-                              nameLoading={nameLoading}
-                              CreateMemeberInvite={CreateMemeberInvite}
-                            />
-                          }
-                        </ExpansionPanelDetails>
-                      </ExpansionPanel>
-                      {index === companies.list.length - 1  &&
-                        <Waypoint onEnter={() => handleChangeLoadCompany()} />
-                      }
+                        <Typography className='expand--title'>{item.name}</Typography>
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails className='exchild'>
+                        {expanded.panel === `panel${index + 1}` &&
+                          <FieldsListInvite
+                            idEmail={`emails${index + 1}`}
+                            optionsEmail={exEmail.map((option) => option.email)}
+                            defaultValueEmail={[exEmail[0].email]}
+                            onChangeEmail={(_, newInputValue) => {
+                              dispatch(addInviteData({ ['emails']: newInputValue }));
+                            }}
+                            handleSelectRole={handleSelectRole}
+                            optionsRoles={auth.roles}
+                            valueRoleID={invite.rolesID}
+                            optionsDepartment={companies.list[index].departmentIDs}
+                            handleSelectDepartment={(e) => handleSelectDepartment(e)}
+                            defaultValueDepartmentID={companies.list[0].departmentIDs[0].departmentID}
+                            valueDepartment={invite.departmentID}
+                            resultStatusInvite={invite.loading['result']}
+                            nameLoading={nameLoading}
+                            CreateMemeberInvite={CreateMemeberInvite}
+                          />
+                        }
+                      </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                    {index === companies.list.length - 1  &&
+                      <Waypoint onEnter={() => handleChangeLoadCompany()} />
+                    }
 
-                    </Grid>
-                  );
-                })
-              }
-            </Grid> :
-            <div className='invite--notify'>
-              {t('invitation:IsAdmin')}
-            </div>
+                  </Grid>
+                );
+              })
+            }
+          </Grid> :
+          <div className='invite--notify'>
+            {t('invitation:IsAdmin')}
+          </div>
           }
-        </Grid>
-      </div>
+      </Grid>
     </React.Fragment>
   );
 };

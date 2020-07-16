@@ -65,7 +65,7 @@ describe('Profiles Page', () => {
     await page.waitForSelector('#phoneNumber');
     await page.click('#phoneNumber');
     await page.waitFor(1000);
-    await page.mouse.click(600, 740, { clickCount: 3, delay: 200 });
+    await page.click('#phoneNumber', { clickCount: 3, delay: 200 });
     await page.waitFor(1000);
     await page.keyboard.press('Backspace');
     await page.waitFor(1000);
@@ -81,7 +81,6 @@ describe('Profiles Page', () => {
 
   });
 });
-
 afterAll(() => {
   browser.close();
 });
