@@ -12,7 +12,7 @@ const puppeteer = require('puppeteer');
 beforeAll(async () => {
   browser = await puppeteer.launch({
     headless: true,
-    slowMo: 250,
+    slowMo: 20,
     ignoreDefaultArgs: ['--no-sandbox'],
   });
   token = await getTokenAdmin();
@@ -30,6 +30,8 @@ describe('ConverSations Pgae', () => {
 
     await page.waitForSelector('.timeline-list > div:nth-child(2) > .timeline-item > .timeline-item--content > .timeline-item--label');
     await page.click('.timeline-list > div:nth-child(2) > .timeline-item > .timeline-item--content > .timeline-item--label');
+
+    await page.waitFor(9000);
 
     const image = await page.screenshot();
     expect(image).toMatchImageSnapshot();

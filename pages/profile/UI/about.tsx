@@ -31,8 +31,8 @@ const About: React.FunctionComponent = () => {
         <Grid item xs={12} sm={4}>
           <div className='profile__body--picture--container'>
             <div className='profile__body--picture'>
-            <img src={profileList.profilePhoto ? profileList.profilePhoto : '../../static/profile_photo.png'} className='profile__body--picture--src' alt='...' />
-            <input type='file' name='profilePhoto' />
+              <img src={profileList.profilePhoto ? profileList.profilePhoto : '../../static/profile_photo.png'} className='profile__body--picture--src' alt='...' />
+              <input type='file' name='profilePhoto' />
             </div>
             <h6 className='profile__body--picture--des'>{t('profile:ChoosePicture')}</h6>
           </div>

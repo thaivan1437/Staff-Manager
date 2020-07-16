@@ -1,0 +1,384 @@
+
+.rdt
+  position: relative
+
+  .form-control
+    background-color: $color-white
+
+.opacity-50 
+  opacity: .5
+
+.rdtOpen 
+  .rdtPicker
+    display: block
+
+    .rdtTimeToggle
+      text-align: center
+
+      &::hover
+        background: $color-grey-2
+        cursor: pointer
+
+    table
+      width: 100%
+      margin: 0
+
+    td
+      text-align: center
+      height: 28px
+      cursor: pointer
+
+    th
+      text-align: center
+      height: 28px
+
+.rdtStatic 
+  .rdtPicker
+    box-shadow: none
+    position: static
+
+.rdtPicker
+  display: none
+  position: absolute
+  width: 250px
+  padding: 4px
+  margin-top: 1px
+  z-index: 99999 
+  background: $color-white
+  border: 1px solid $color-grey-1
+
+  td
+    cursor: pointer
+
+    &.rdtDay,
+    &.rdtHour,
+    &.rdtMinute,
+    &.rdtSecond
+      &:hover
+        background: $color-grey-2
+        cursor: pointer
+
+    &.rdtOld,
+    &.rdtNew
+      color: $color-grey-3
+
+    &.rdtToday
+      position: relative
+
+      &:before
+        content: ''
+        display: inline-block
+        border-left: 7px solid transparent
+        border-bottom: 7px solid $color-blue-5
+        border-top-color: $color-black-1
+        position: absolute
+        bottom: 4px
+        right: 4px
+
+    &.rdtActive
+      background-color: $color-blue-5
+      color: $color-white
+
+      &:hover
+        background-color: $color-blue-5
+        color: $color-white
+
+      &.rdtToday
+        &:before
+          border-bottom-color: $color-white
+
+    &.rdtDisabled
+      background: none
+      color: $color-grey-3
+      cursor: not-allowed
+
+      &:hover
+        background: none
+        color: $color-grey-3
+        cursor: not-allowed
+
+    span
+      &.rdtOld
+        color: $color-grey-3
+
+      &.rdtDisabled
+        background: none
+        color: $color-grey-3
+        cursor: not-allowed
+
+        &:hover
+          background: none
+          color: $color-grey-3
+          cursor: not-allowed
+
+  .dow
+    width: 14.2857%
+    border-bottom: unset
+
+  th
+    border-bottom: 1px solid $color-grey-1
+
+    &.rdtSwitch
+      width: 100px
+
+    &.rdtNext,
+    &.rdtPrev
+      font-size: 21px
+      vertical-align: top
+
+    &.rdtDisabled
+      background: none
+      color: $color-grey-3
+      cursor: not-allowed
+
+    &:hover
+      background: none
+      color: $color-grey-3
+      cursor: not-allowed
+
+  thead
+    button
+      width: 100%
+      height: 100%
+    
+    tr
+      &:first-child 
+        th
+          cursor: pointer
+
+    &:hover
+      background: $color-grey-2
+
+  tfoot
+    border-top: 1px solid $color-grey-1
+
+  button
+    border: unset
+    background: none
+    cursor: pointer
+
+    &:hover
+      background-color: $color-grey-2
+
+.rdtPrev 
+  span
+    display: block
+
+.rdtNext 
+  span
+    display: block
+
+td
+  &.rdtMonth,
+  &.rdtYear
+    height: 50px
+    width: 25%
+    cursor: pointer
+
+  &.rdtMonth
+    &:hover
+      background: $color-grey-2
+
+  &.rdtYear
+    &:hover
+      background: $color-grey-2
+
+.rdtCounters
+  display: inline-block
+
+  > div
+    float: left
+
+.rdtCounterSeparator
+  line-height: 100px
+
+.rdtCounter
+  height: 100px
+  width: 40px
+
+  .rdtBtn
+    height: 40%
+    line-height: 40px
+    cursor: pointer
+    display: block
+
+    &:hover
+      background: $color-grey-2
+
+  .rdtCount
+    height: 20%
+    font-size: 1.2em
+
+.rdtMilli
+  vertical-align: middle
+  padding-left: 8px
+  width: 48px
+
+  input
+    width: 100%
+    font-size: 1.2em
+    margin-top: 37px
+
+.pt-3,
+.py-3 
+  padding-top: 1rem
+
+.pl-0,
+.px-0 
+  padding-left: 0
+
+
+.pr-0,
+.px-0 
+  padding-right: 0
+
+.rounded 
+  border-radius: .25rem
+
+.border 
+  // border: 1px solid $color-white-3
+
+  hr
+    display: none
+
+.px-3
+  padding: 0 1rem
+
+.form-group
+  margin-bottom: 1rem
+
+.btn-group,
+.btn-group-vertical 
+  position: relative
+  display: inline-flex
+  vertical-align: middle
+
+.row
+  display: flex
+  flex-wrap: wrap
+  margin-left: -15px
+  margin-right: -15px
+
+.col-6,
+.col-sm-3,
+.col-sm-2,
+.col-sm-6,
+.col-sm-1
+  position: relative
+  width: 100%
+  min-height: 1px
+  padding-right: 15px
+  padding-left: 15px
+
+.col-6 
+  flex: 0 0 50%
+  max-width: 50%
+
+.form-control
+  &::disabled,
+  &[readonly]
+    background-color: $color-white-4
+    opacity: 1
+
+.rdt 
+  .form-control 
+    background-color: $color-white
+
+
+.form-control 
+  display: block
+  width: 100%
+  height: calc(2.25rem + 2px)
+  padding: .375rem .75rem
+  font-size: 1rem
+  line-height: 1.5
+  color: $color-grey-7
+  background-color: $color-white
+  background-clip: padding-box
+  border: 1px solid $color-white-5
+  border-radius: .25rem
+  transition: border-color .15s ease-in-out
+
+.btn 
+  display: inline-block
+  font-weight: 400
+  text-align: center
+  white-space: nowrap
+  vertical-align: middle
+  user-select: none
+  border: 1px solid transparent
+  padding: .375rem .75rem
+  font-size: 1rem
+  line-height: 1.5
+  border-radius: .25rem
+  transition: color .15s ease-in-out
+  cursor: pointer
+
+  input
+    &[type=checkbox]
+      position: absolute
+      clip: rect(0, 0, 0, 0)
+  
+  &-primary
+    color: $color-white
+    background-color: $color-blue-8
+    border-color: $color-blue-8
+    border-radius: 0
+
+    &:hover
+      color: $color-white
+      background-color: $color-blue-6
+      border-color: $color-blue-7
+
+
+label
+  &.active
+    color: $color-white
+    background-color: $color-blue-6
+    border-color: $color-blue-7
+  
+  strong
+    color: $color-black-3
+    font-weight: 400
+
+
+.d-flex 
+  display: flex
+
+.pt-3
+  padding-top: 1rem
+
+.px-0
+  padding-left: 0
+  padding-right: 0
+
+@media (min-width: 576px)
+  .col-sm-2 
+    flex: 0 0 16.666667%
+    max-width: 16.666667%
+
+  .col-sm-3
+    flex: 0 0 25%
+    max-width: 25%
+  
+  .offset-sm-2
+    margin-left: 16.666667%
+  
+  .col-sm-1
+    flex: 0 0 8.333333%
+    max-width: 8.333333%
+  
+  .col-sm-6 
+    flex: 0 0 50%
+    max-width: 50%
+
+  
+  .align-items-sm-center 
+    align-items: center
+
+
+
+
+
+
+
