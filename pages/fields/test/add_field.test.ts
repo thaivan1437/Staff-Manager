@@ -24,9 +24,7 @@ describe('Profiles Page', () => {
   test('Test tab modal add fields', async () => {
 
     await page.goto(`${routes.private.fields}?token=${token}`);
-    await page.waitForSelector('body > #\__next > div > .flex > .w__full');
-    await page.click('body > #\__next > div > .flex > .w__full');
-    await page.waitForSelector('.fields__dialog');
+    await page.waitForSelector('.companies__title');
     await page.click('.fields__dialog');
     await page.waitForSelector('#form-dialog-title');
     await page.waitForSelector('.MuiPaper-root #name');
@@ -46,8 +44,7 @@ describe('Profiles Page', () => {
 
     await page.goto(`${routes.private.fields}?token=${token}error`);
 
-    await page.waitForSelector('body > #\__next > div > .flex > .w__full');
-    await page.click('body > #\__next > div > .flex > .w__full');
+    await page.waitForSelector('.companies__title');
     await page.waitForSelector('.fields__dialog');
     await page.click('.fields__dialog');
     await page.waitForSelector('#form-dialog-title');

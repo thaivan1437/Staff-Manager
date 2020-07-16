@@ -20,8 +20,8 @@ beforeAll(async () => {
 describe('Auth Page', () => {
   test('test', async () => {
     await page.goto(routes.private.home);
-    await page.waitForSelector('.dashboard--title');
-    const html = await page.$eval('.dashboard--title', (e) => e.innerHTML);
+    await page.waitForSelector('.header__dash');
+    const html = await page.$eval('.header__dash', (e) => e.innerHTML);
     expect(html).toBe('Dashboard');
   });
 });

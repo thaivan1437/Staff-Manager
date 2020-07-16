@@ -21,11 +21,12 @@ describe('Home Page', () => {
   test('Typography loads correctly', async () => {
 
     await page.goto(routes.private.home);
-    await page.waitForSelector('.dashboard--title');
+    await page.waitForSelector('.header__dash');
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot();
-    const html = await page.$eval('.dashboard--title', (e) => e.innerHTML);
+    await page.waitForSelector('.header__dash');
+    const html = await page.$eval('.header__dash', (e) => e.innerHTML);
     expect(html).toBe('Dashboard');
   });
 });

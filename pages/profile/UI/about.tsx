@@ -107,7 +107,6 @@ const About: React.FunctionComponent = () => {
           <Button
             className='btn__save'
             variant='contained'
-            color='secondary'
             type='submit'
             onClick={handleAddProfile}
           >

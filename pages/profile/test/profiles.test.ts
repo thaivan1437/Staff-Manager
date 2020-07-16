@@ -25,13 +25,11 @@ describe('Profiles Page', () => {
 
     await page.goto(`${routes.private.profile}?token=${token}`);
     await page.waitForSelector('.profile__header--title');
-
     await page.tap('.firstName');
     await page.type('.firstName', 'test');
     await page.tap('.lastName');
     await page.type('.lastName', 'test');
     await page.tap('.btn__save');
-
     await page.waitForSelector('.success');
     const html = await page.$eval('.success', (e) => e.innerHTML);
     expect(html).toBe('Lưu thành công');
@@ -48,12 +46,14 @@ describe('Profiles Page', () => {
     await page.waitForSelector('.firstName');
     await page.click('.firstName');
     await page.waitFor(1000);
-    await page.mouse.click(880, 555, { clickCount: 3, delay: 200 });
+    await page.click('.firstName', { clickCount: 3, delay: 200 });
+    await page.waitFor(1000);
+    await page.click('#last-name');
+    await page.waitFor(1000);
+    await page.click('#last-name', { clickCount: 3, delay: 200 });
     await page.waitFor(1000);
     await page.keyboard.press('Backspace');
     await page.waitFor(1000);
-    await page.tap('.lastName');
-    await page.type('.lastName', 'test');
     await page.tap('.btn__save');
 
     await page.waitForSelector('.success');
