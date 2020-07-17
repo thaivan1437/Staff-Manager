@@ -10,7 +10,7 @@
   "warning": "Cảnh báo",
   "descWarning": "Bạn có muốn xóa bài này không ?",
   "deleteSuccess": "Xóa thành công!",
-  "deleteNoSuccess": "Xóa không thành công !",
+  "deleteNotSuccess": "Xóa không thành công !",
   "createSuccess": "Thêm mới thành công!",
   "createNotSuccess": "Thêm mới thất bại!",
   "updateSuccess": "Chỉnh sửa thành công!",

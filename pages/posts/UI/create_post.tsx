@@ -133,12 +133,12 @@ export const CreatePost = () => {
           </Grid>
           <Grid item xs={12} sm={12}>
             <div className=''>
-              {(post.loading['result'] === 201) &&
+              {(post.loading['resultCreate'] === 201) &&
                 <Alert variant='filled' severity='success'>
                   <div className='success'>{t('post:createSuccess')}</div>
                 </Alert>
               }
-              {(post.loading['result'] === 1) &&
+              {(post.loading['resultCreate'] === 1) &&
                 <Alert variant='filled' severity='error'>
                   <div className='success'>{t('post:createNotSuccess')}</div>
                 </Alert>

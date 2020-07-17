@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { config } from '../../../helpers/get_config';
 import { loading, getPosts, addPostData,
-   updateCursor, addPostsPagination, activedeletePost, createImageLink, addPostDataUpdate } from './post_actions';
+  addPostsPagination, activedeletePost, createImageLink, addPostDataUpdate, addPostInList } from './post_actions';
 
 interface PostObject{
   images?: string[];
@@ -52,13 +52,22 @@ const initialSate : PostsInvitation = {
 export const post = (state = initialSate , action) => {
   switch (action.type){
     case 'ADD':
+
       return {
         ...state,
         addedPost : {
           ...state.addedPost,
           ...action.payload.addedPost,
         },
-        loading: { result: 0 },
+        loading: { resultCreate: 0 },
+      };
+    case 'ADD_POST_IN_LIST':
+      const listNew = JSON.parse(JSON.stringify(state.list));
+      listNew.unshift(action.payload);
+
+      return {
+        ...state,
+        list: listNew,
       };
     case 'ADD_DATA_UPDATE':
       const copiedList = JSON.parse(JSON.stringify(state.list));
@@ -81,6 +90,7 @@ export const post = (state = initialSate , action) => {
           ...action.payload.selectedPost,
         },
         list: newList,
+        loading: { resultUpdate: 0 },
       };
 
     case 'ACTIVE_DELETE_DATA':
@@ -90,6 +100,7 @@ export const post = (state = initialSate , action) => {
       return {
         ...state,
         list: newDeleteList,
+        loading: { resultDelete: 0 },
       };
     case 'ADD_DELETE_DATA':
       return {
@@ -98,6 +109,7 @@ export const post = (state = initialSate , action) => {
           ...state.deletedPost,
           ...action.payload.deletedPost,
         },
+        loading: { resultDelete: 0 },
       };
     case 'GET_POSTS':
       return {
@@ -110,11 +122,6 @@ export const post = (state = initialSate , action) => {
         ...state,
         ...action.payload,
       };
-    case 'UPDATE_CURSOR':
-      return {
-        ...state,
-        cursor: action.payload,
-      };
     case 'ADD_POSTS_PAGINATION':
       const copiedPostPaginationList = JSON.parse(JSON.stringify(state.list));
       copiedPostPaginationList.push(...action.payload.list);
@@ -122,6 +129,7 @@ export const post = (state = initialSate , action) => {
       return {
         ...state,
         list: copiedPostPaginationList,
+        cursor: action.payload.cursor,
       };
     case 'LOADING':
       return {
@@ -149,7 +157,7 @@ export const createPost = () =>  async (dispatch, getState) => {
     if (!state.auth || !state.auth.value || !state.auth.companyID){
       // tslint:disable-next-line:no-console
       console.log('Thiếu token hoặc tham số');
-      await dispatch(loading({ loading: false, result: 1 }));
+      await dispatch(loading({ loading: false, resultCreate: 1 }));
 
       return;
     }
@@ -161,10 +169,11 @@ export const createPost = () =>  async (dispatch, getState) => {
         Authorization: token,
       },
     });
-    await dispatch(loading({ loading: false, result: res.status }));
+    await dispatch(addPostInList(res.data));
+    await dispatch(loading({ loading: false, resultCreate: res.status }));
 
   } catch (error) {
-    await dispatch(loading({ loading: false, result: 1 }));
+    await dispatch(loading({ loading: false, resultCreate: 1 }));
   }
 
 };
@@ -172,7 +181,7 @@ export const deletedPost = () =>  async (dispatch, getState) => {
   try {
     const state = getState();
     await dispatch(activedeletePost());
-    await dispatch(loading({ loading: true }));
+    await dispatch(loading({ loadingDelete: true }));
 
     if (!state.auth || !state.auth.value || !state.post.deletedPost.postID){
       // tslint:disable-next-line:no-console
@@ -188,12 +197,12 @@ export const deletedPost = () =>  async (dispatch, getState) => {
       },
     });
 
-    await dispatch(loading({ loading: false, result: res.status }));
+    await dispatch(loading({ loadingDelete: false, resultDelete: res.status }));
 
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.log(error);
-    await dispatch(loading({ loading: false, result: 1 }));
+    await dispatch(loading({ loadingDelete: false, resultDelete: 1 }));
   }
 
 };
@@ -225,12 +234,12 @@ export const updatePost = () =>  async (dispatch, getState) => {
       },
     });
 
-    await dispatch(loading({ loading: false, result: res.status }));
+    await dispatch(loading({ loading: false, resultUpdate: res.status }));
 
   } catch (error) {
     // tslint:disable-next-line:no-console
     console.log(error);
-    await dispatch(loading({ loading: false, result: 1 }));
+    await dispatch(loading({ loading: false, resultUpdate: 1 }));
   }
 
 };
@@ -330,7 +339,7 @@ export const getPostsPaginationThunkAction = () => async (dispatch, getState) =>
     }
 
     await dispatch(addPostsPagination(res.data));
-    await dispatch(updateCursor(res.data.cursor));
+    // await dispatch(updateCursor(res.data.cursor));
     await dispatch(loading({ loadingPagination: false }));
 
   } catch (error) {

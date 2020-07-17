@@ -71,6 +71,13 @@ export const listCard: ListCard [] = [
         router: '/conversations',
         icon: 'ForumIcon',
       },
+      {
+        name: 'Posts',
+        tab: 'posts',
+        objectChild: [],
+        router: '/posts',
+        icon: 'ForumIcon',
+      },
     ],
   },
 ];

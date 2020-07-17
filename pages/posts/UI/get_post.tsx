@@ -96,12 +96,12 @@ export const GetPost = () => {
           </DialogContent>
           <DialogActions>
             <div className=''>
-              {(post.loading['result'] === 200) &&
+              {(post.loading['resultDelete'] === 200) &&
                 <Alert variant='filled' severity='success'>
                   <div className='success'>{t('post:deleteSuccess')}</div>
                 </Alert>
               }
-              {(post.loading['result'] === 1) &&
+              {(post.loading['resultDelete'] === 1) &&
                 <Alert variant='filled' severity='error'>
                   <div className='success'>{t('post:deleteNotSuccess')}</div>
                 </Alert>

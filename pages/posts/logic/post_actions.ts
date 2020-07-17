@@ -54,9 +54,9 @@ export const addPostsPagination = (res: object) => {
   };
 };
 
-export const updateCursor = (res: string) => {
+export const addPostInList = (res: string) => {
   return{
-    type: 'UPDATE_CURSOR',
+    type: 'ADD_POST_IN_LIST',
     payload: res,
   };
 };
