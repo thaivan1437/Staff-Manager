@@ -140,12 +140,12 @@ export const UpdatePost = () => {
           </Grid>
           <Grid item xs={12} sm={12}>
             <div className=''>
-              {(post.loading['result'] === 200) &&
+              {(post.loading['resultUpdate'] === 200) &&
                 <Alert variant='filled' severity='success'>
                   <div className='success'>{t('post:updateSuccess')}</div>
                 </Alert>
               }
-              {(post.loading['result'] === 1) &&
+              {(post.loading['resultUpdate'] === 1) &&
                 <Alert variant='filled' severity='error'>
                   <div className='success'>{t('post:updateNotSuccess')}</div>
                 </Alert>
