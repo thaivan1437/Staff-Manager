@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Button, FormControlLabel } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, FormControlLabel, Popover } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import { i18n, Router, withTranslation } from '../../i18n';
 import { TFunction } from 'next-i18next';
@@ -8,6 +8,8 @@ import { Logout, Login } from '../../pages/auth/logic/login_actions';
 import { GetUserDataThunkAction, getRolesThunkAction } from 'pages/auth/logic/login_reducer';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import Notifications from '../../pages/notifications/index.page';
+import { getNotificationsAction } from 'pages/notifications/logic/notification_reducer';
 interface DataType {
   t: TFunction;
 }
@@ -29,6 +31,15 @@ async function onSwitchLanguage(event) {
 
 const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    void fetchNotification();
+  }, [auth]);
+
+  const fetchNotification = async() => {
+    await dispatch(getNotificationsAction());
+  };
 
   useEffect(() => {
     let token: Token = window.location.search;
@@ -91,6 +102,16 @@ const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
     );
   };
 
+  // <!---------------Popover React component (Material UI)---------------!>
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClickPopover = (event) => { setAnchorEl(event.currentTarget); };
+  const handleClosePopover = () => { setAnchorEl(null); };
+  const open = Boolean(anchorEl);
+  // <!---------------Popover React component (Material UI)---------------!>
+
+  const notifications = useSelector((state) => state.notifications);
+
   return (
     <div className='header'>
       <div className='header__logo'>
@@ -105,10 +126,27 @@ const Header: React.FunctionComponent<HeaderProps> = ({ t }) => {
           <p className='header__dash'>Dashboard</p>
         </div>
         <div className='toolbar__right'>
-          <Button>
+          <Button onClick={handleClickPopover}>
             <NotificationsActiveIcon className='header__notification'/>
+            <span className='rounded-circle count__notifications'>{notifications.totalCount}</span>
           </Button>
+          <Popover
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClosePopover}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+          >
+            <Notifications />
+          </Popover>
           <FormControlLabel
+            className='mx-3 my-0'
             control={
               <Switch
                 onChange={onSwitchLanguage}
