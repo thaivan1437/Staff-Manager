@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { SyncLoader } from 'react-spinners';
 interface InitialProps{
   loading: boolean;
 }
@@ -17,7 +17,7 @@ const Loading: React.FunctionComponent<InitialProps> = ({ loading = initialSate 
 
   return (
     <div className='loading'>
-      <img src='../../static/images/loading.gif' />
+      <SyncLoader color={'#3d4977'}/>
     </div>
   );
 };
