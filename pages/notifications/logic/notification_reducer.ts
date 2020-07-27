@@ -60,7 +60,7 @@ export const getNotificationsAction = () =>  async (dispatch, getState) => {
       return;
     }
     const token = `Bearer ${state.auth.value}`;
-    const res = await axios.get(`${config.API_HOST}/s2/user/me/notifications?limit=1`, {
+    const res = await axios.get(`${config.API_HOST}/s2/user/me/notifications?limit=5`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token,
@@ -85,7 +85,7 @@ export const getNotificationsPagination = () => async (dispatch, getState) => {
     }
     const cursor = state.notifications.cursor;
     const token = `Bearer ${state.auth.value}`;
-    const res = await axios.get(`${config.API_HOST}/s2/user/me/notifications?cursor=${cursor}&limit=1`, {
+    const res = await axios.get(`${config.API_HOST}/s2/user/me/notifications?cursor=${cursor}&limit=3`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token,

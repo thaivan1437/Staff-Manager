@@ -9,6 +9,7 @@ import { conversations } from '../pages/conversations/logic/conversations_reduce
 import { companies } from '../pages/companies/logic/companies_reducer';
 import { post } from '../pages/posts/logic/post_reducer';
 import { departmentsReducer } from 'pages/departments_member/logic/departments_reducer';
+import { scripts } from '../pages/scripts/logic/scripts_reducer';
 import { notifications } from '../pages/notifications/logic/notification_reducer';
 import { combineReducers } from 'redux';
 
@@ -22,10 +23,10 @@ const rootReducer = combineReducers({
   conversations,
   fields,
   post,
+  scripts,
+  notifications,
   profile: profileReducer,
   departments: departmentsReducer,
-  // tslint:disable-next-line:object-shorthand-properties-first
-  notifications,
 });
 
 export default rootReducer;

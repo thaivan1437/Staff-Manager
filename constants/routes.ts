@@ -16,5 +16,6 @@ export const routes = {
     department: `${appUrlBase}/departments_member`,
     get_conversations: `${appUrlBase}/conversations`,
     posts: `${appUrlBase}/posts`,
+    scripts: `${appUrlBase}/scripts`,
   },
 };
