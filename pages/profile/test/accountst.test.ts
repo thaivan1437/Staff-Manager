@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 beforeAll(async () => {
   browser = await puppeteer.launch({
     headless: true,
-    slowMo: 250,
+    slowMo: 50,
     ignoreDefaultArgs: ['--no-sandbox'],
     args: ['--start-maximized'],
   });
@@ -28,8 +28,6 @@ describe('Profiles Page', () => {
 
     await page.waitForSelector('#gender');
     await page.tap('#gender');
-    await page.waitForSelector('body > #menu-gender > .MuiPaper-root > .MuiList-root > .MuiButtonBase-root:nth-child(1)');
-    await page.click('body > #menu-gender > .MuiPaper-root > .MuiList-root > .MuiButtonBase-root:nth-child(1)');
 
     await page.waitForSelector('#dateOfBirth');
     await page.tap('#dateOfBirth');
@@ -56,8 +54,6 @@ describe('Profiles Page', () => {
     await page.waitForSelector('.profile__header--title');
 
     await page.tap('#gender');
-    await page.waitForSelector('body > #menu-gender > .MuiPaper-root > .MuiList-root > .MuiButtonBase-root:nth-child(1)');
-    await page.click('body > #menu-gender > .MuiPaper-root > .MuiList-root > .MuiButtonBase-root:nth-child(1)');
 
     await page.tap('#dateOfBirth');
     await page.type('#dateOfBirth', '04/25/1996');

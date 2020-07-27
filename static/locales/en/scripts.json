@@ -1,0 +1,19 @@
+{
+    "scripts": "Scripts",
+    "create": "Create",
+    "createScript": "Create Scripts",
+    "createSuccess": "Create Success",
+    "createFailed": "Create Failed",
+    "userScripts": "User Scripts",
+    "updateScripts": "Update Scripts",
+    "updateSuccess": "Update success",
+    "updateFailed": "Update Failed",
+    "deleteSuccess": "Delete Success",
+    "deleteFailed": "Delete Failed",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "notifications": "Notifications",
+    "wantDelete": "Are you want to delete",
+    "yes": "Ok"
+}

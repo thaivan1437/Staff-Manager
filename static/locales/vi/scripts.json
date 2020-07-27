@@ -1,0 +1,19 @@
+{
+    "scripts": "Scripts",
+    "create": "Thêm mới",
+    "createScript": "Thêm mới Scripts",
+    "createSuccess": "Thêm mới thành công",
+    "createFailed": "Thêm mới thất bại",
+    "userScripts": "User Scripts",
+    "updateScripts": "Cập nhật Scripts",
+    "updateSuccess": "Cập nhật thành công",
+    "updateFailed": "Cập nhật thất bại",
+    "deleteSuccess": "Xóa thành công",
+    "deleteFailed": "Xóa thất bại",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "save": "Lưu",
+    "notifications": "Thông báo",
+    "wantDelete": "Bạn có muốn xóa",
+    "yes": "Ok"
+}

@@ -38,7 +38,6 @@ const initialSate : PostsInvitation = {
   selectedPost: {
     title: '',
     workingTime: '',
-
   },
   deletedPost: {
     postID: '',
@@ -339,7 +338,6 @@ export const getPostsPaginationThunkAction = () => async (dispatch, getState) =>
     }
 
     await dispatch(addPostsPagination(res.data));
-    // await dispatch(updateCursor(res.data.cursor));
     await dispatch(loading({ loadingPagination: false }));
 
   } catch (error) {

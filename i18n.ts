@@ -68,6 +68,7 @@ export const includeDefaultNamespaces = (namespaces: string[]) =>
     'invitation',
     'profile',
     'post',
+    'scripts',
     'converSations',
     'notifications',
   ].concat(namespaces);

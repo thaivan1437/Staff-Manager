@@ -26,7 +26,6 @@ const ListFieldsCreatePost = [
 export const UpdatePost = () => {
   const { t }: DataType = useTranslation();
   const post = useSelector((state) => state.post);
-
   const dispatch = useDispatch();
 
   const checkTypes = (e, type) => {
